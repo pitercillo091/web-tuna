@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Tuna — Grupo musical universitario para bodas, comuniones, serenatas y eventos. Más de 352 canciones, tradición y emoción en cada acto. Contacta con nosotros.">
+    <meta name="keywords" content="tuna universitaria, música en bodas, serenatas, comuniones, eventos musicales, música en vivo, tradición">
+    <meta name="author" content="La Tuna">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="La Tuna — Donde la tradición se convierte en emoción">
+    <meta property="og:description" content="Grupo musical universitario para bodas, comuniones y eventos. Más de 352 canciones en repertorio.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://latuna.es">
+    <meta property="og:image" content="./FOTOS/photo_2026-06-14_02-09-19.jpg">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="La Tuna">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="La Tuna — Donde la tradición se convierte en emoción">
+    <meta name="twitter:description" content="Grupo musical universitario para bodas, comuniones y eventos. Más de 352 canciones en repertorio.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+
+    <title>La Tuna — Donde la tradición se convierte en emoción</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Leaflet.js for interactive map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+</head>
+<body>
+
+    <!-- ============================================ -->
+    <!-- HEADER / NAV -->
+    <!-- ============================================ -->
+    <header id="header" class="header">
+        <div class="header__container">
+            <a href="#inicio" class="header__logo">
+                <img src="./LOGO.jpg" alt="Escudo La Tuna" class="header__logo-img">
+                <span class="header__logo-text">LA TUNA</span>
+            </a>
+            <nav class="header__nav" id="mainNav">
+                <ul class="header__nav-list">
+                    <li><a href="#inicio" class="header__nav-link active">Inicio</a></li>
+                    <li><a href="#experiencia" class="header__nav-link">La Experiencia</a></li>
+                    <li><a href="#servicios" class="header__nav-link">Servicios</a></li>
+                    <li><a href="#cancionero" class="header__nav-link">Cancionero</a></li>
+                    <li><a href="#galeria" class="header__nav-link">Galería</a></li>
+                    <li><a href="#videos" class="header__nav-link">Vídeos</a></li>
+                    <li><a href="#testimonios" class="header__nav-link">Testimonios</a></li>
+                    <li><a href="#contacto" class="header__nav-link">Contacto</a></li>
+                </ul>
+                <a href="https://wa.me/34622358110" target="_blank" rel="noopener" class="header__nav-cta">
+                    <svg class="header__nav-cta-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+            </nav>
+            <button class="header__hamburger" id="hamburger" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- HERO -->
+    <!-- ============================================ -->
+    <section id="inicio" class="hero">
+        <div class="hero__bg">
+            <img src="./FOTOS/photo_2026-06-14_02-09-19.jpg" alt="La Tuna en desfile nocturno" class="hero__bg-img" loading="eager">
+        </div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content animate-on-scroll">
+            <p class="hero__tagline">✦ Música en vivo para momentos únicos ✦</p>
+            <h1 class="hero__title text-reveal">Donde la tradición se convierte en <em>emoción</em></h1>
+            <p class="hero__subtitle">Más de 352 canciones, siglos de tradición universitaria y un repertorio capaz de hacer llorar de emoción a tu familia. Bodas, comuniones, serenatas… cada acto se convierte en un recuerdo inolvidable.</p>
+            <div class="hero__actions">
+                <a href="https://wa.me/34622358110?text=Hola%2C%20me%20interesa%20contratar%20La%20Tuna%20para%20un%20evento" class="btn btn--primary btn--lg" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    Reserva por WhatsApp
+                </a>
+                <a href="#galeria" class="btn btn--outline btn--lg">Ver Galería</a>
+            </div>
+        </div>
+        <div class="hero__scroll-indicator">
+            <span>Descubre más</span>
+            <div class="hero__scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- LA EXPERIENCIA -->
+    <!-- ============================================ -->
+    <section id="experiencia" class="section experiencia section--deep">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <p class="section__eyebrow">✦ Nuestra historia ✦</p>
+                <h2 class="section__title">La Experiencia</h2>
+                <div class="section__divider"></div>
+            </div>
+
+            <div class="experiencia__content animate-on-scroll">
+                <div class="experiencia__text">
+                    <p class="experiencia__lead">Desde hace generaciones, la Tuna universitaria ha sido la banda sonora de los momentos más importantes de la vida. Somos herederos de una tradición que se remonta al siglo XV, cuando los estudiantes universitarios recorrían las calles cantando para conquistar corazones.</p>
+                    <p>Hoy, llevamos esa misma pasión y elegancia a tu evento. Con trajes tradicionales bordados, instrumentos de época y un repertorio de más de <strong>352 canciones</strong>, transformamos cualquier celebración en una experiencia que tus invitados recordarán para siempre.</p>
+                    <p>No somos un grupo más de música. Somos una <strong>experiencia completa</strong>: desde la entrada triunfal hasta la última serenata, cada momento está cuidado al detalle para que tú solo tengas que disfrutar.</p>
+                </div>
+            </div>
+
+            <div class="experiencia__cards">
+                <div class="card animate-on-scroll">
+                    <div class="card__icon">🎭</div>
+                    <h3 class="card__title">Trajes de Época</h3>
+                    <p class="card__text">Trajes tradicionales universitarios bordados a mano con capa, sombrero de picos y gola. La elegancia de siglos pasados hecha realidad en tu evento.</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card__icon">🎶</div>
+                    <h3 class="card__title">352 Canciones</h3>
+                    <p class="card__text">Desde los pasodobles más emotivos hasta las jotas más festivas. Un repertorio inmenso que adapta la música al momento exacto de tu celebración.</p>
+                </div>
+                <div class="card animate-on-scroll">
+                    <div class="card__icon">✨</div>
+                    <h3 class="card__title">Experiencia Completa</h3>
+                    <p class="card__text">Entrada de gala, serenatas, bailes y desfiles. Cuidamos cada detalle para que tu evento sea una auténtica fiesta universitaria.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    
+    </div>
+
+    <!-- SERVICIOS -->
+    <!-- ============================================ -->
+    <section id="servicios" class="section servicios">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <p class="section__eyebrow">✦ Lo que ofrecemos ✦</p>
+                <div class="section-divider"></div>
+                <h2 class="section__title">Servicios</h2>
+                <div class="section__divider"></div>
+                <p class="section__subtitle">Cada evento es único. Por eso adaptamos nuestra actuación a tus necesidades, creando un momento mágico para ti y tus invitados.</p>
+            </div>
+
+            <div class="servicios__grid">
+                <div class="servicio-card animate-on-scroll">
+                    <div class="servicio-card__icon">💍</div>
+                    <h3 class="servicio-card__title">Bodas</h3>
+                    <p class="servicio-card__text">La serenata de la novia, la entrada a la iglesia, el baile del primer waltz… Hacemos de tu boda una película romántica con banda sonora en vivo.</p>
+                    <div class="servicio-card__price">Consulta precio</div>
+                    <a href="https://wa.me/34622358110?text=Hola%2C%20me%20interesa%20contratar%20La%20Tuna%20para%20mi%20boda" class="servicio-card__cta" target="_blank" rel="noopener">Consultar disponibilidad</a>
+                </div>
+
+                <div class="servicio-card animate-on-scroll">
+                    <div class="servicio-card__icon">🎂</div>
+                    <h3 class="servicio-card__title">Cumpleaños</h3>
+                    <p class="servicio-card__text"> sorpresa inolvidable para el homenajeado. Entramos con música, cantamos los pasodobles favoritos y convertimos la fiesta en algo mágico.</p>
+                    <div class="servicio-card__price">Consulta precio</div>
+                    <a href="https://wa.me/34622358110?text=Hola%2C%20me%20interesa%20contratar%20La%20Tuna%20para%20un%20cumplea%C3%B1os" class="servicio-card__cta" target="_blank" rel="noopener">Consultar disponibilidad</a>
+                </div>
+
+                <div class="servicio-card animate-on-scroll">
+                    <div class="servicio-card__icon">🕊️</div>
+                    <h3 class="servicio-card__title">Comuniones</h3>
+                    <p class="servicio-card__text">Acompañamos a los más pequeños en su día más especial. Música tradicional, colores y una celebración que los niños adorarán.</p>
+                    <div class="servicio-card__price">Consulta precio</div>
+                    <a href="https://wa.me/34622358110?text=Hola%2C%20me%20interesa%20contratar%20La%20Tuna%20para%20una%20comuni%C3%B3n" class="servicio-card__cta" target="_blank" rel="noopener">Consultar disponibilidad</a>
+                </div>
+
+                <div class="servicio-card animate-on-scroll">
+                    <div class="servicio-card__icon">🌹</div>
+                    <h3 class="servicio-card__title">Serenatas</h3>
+                    <p class="servicio-card__text">La serenata más romántica que puedas imaginar. Con capa, espada y guitarra, cantamos bajo la ventana o en el jardín para la persona que amas.</p>
+                    <div class="servicio-card__price">Consulta precio</div>
+                    <a href="https://wa.me/34622358110?text=Hola%2C%20me%20interesa%20una%20serenata%20de%20La%20Tuna" class="servicio-card__cta" target="_blank" rel="noopener">Consultar disponibilidad</a>
+                </div>
+
+                <div class="servicio-card animate-on-scroll">
+                    <div class="servicio-card__icon">🏢</div>
+                    <h3 class="servicio-card__title">Eventos de Empresa</h3>
+                    <p class="servicio-card__text">Presentaciones, inauguraciones, galas de empresa… Sorprende a tus clientes y colaboradores con un toque de distinción y tradición.</p>
+                    <div class="servicio-card__price">Consulta precio</div>
+                    <a href="https://wa.me/34622358110?text=Hola%2C%20me%20interesa%20contratar%20La%20Tuna%20para%20un%20evento%20de%20empresa" class="servicio-card__cta" target="_blank" rel="noopener">Consultar disponibilidad</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CANCIONERO -->
+    <!-- ============================================ -->
+    <section id="cancionero" class="section cancionero">
+        <div class="container">
+            <div class="cancionero__content animate-on-scroll">
+                <div class="cancionero__icon">📖</div>
+                <h2 class="cancionero__title">Nuestro Cancionero</h2>
+                <p class="cancionero__text blur-overlay">Con más de <strong>352 canciones</strong> en nuestro repertorio, tenemos la canción perfecta para cada momento de tu evento. Desde pasodobles románticos hasta jotas festivas, desde zarzuelas clásicas hasta adaptaciones modernas.</p>
+                <p class="cancionero__text blur-overlay">¿Quieres ver todas las canciones que podemos cantar en tu celebración? Accede a nuestro cancionero online y elige las tuyas favoritas.</p>
+                <a href="https://pitercillo091.github.io/cancionero-tuna/" class="btn btn--primary btn--lg cancionero__btn" target="_blank" rel="noopener">
+                    📖 Explorar el Cancionero
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- GALERÍA -->
+    <!-- ============================================ -->
+    <section id="galeria" class="section galeria">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <p class="section__eyebrow">✦ Momentos capturados ✦</p>
+                <h2 class="section__title">Galería</h2>
+                <div class="section__divider"></div>
+                <p class="section__subtitle">Un vistazo a los eventos donde hemos sido parte de la banda sonora de momentos inolvidables.</p>
+            </div>
+
+            <div class="galeria__grid">
+                <div class="galeria__item animate-on-scroll" data-index="0">
+                    <img src="./FOTOS/photo_2017-08-06_21-35-38.jpg" alt="La Tuna en desfile nocturno con capa" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Desfile nocturno</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="1">
+                    <img src="./FOTOS/photo_2018-04-21_17-17-18.jpg" alt="La Tuna en actuación" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Actuación en directo</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="2">
+                    <img src="./FOTOS/photo_2019-07-27_16-58-15.jpg" alt="La Tuna en celebración" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Celebración especial</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="3">
+                    <img src="./FOTOS/photo_2019-09-22_16-39-36.jpg" alt="Instrumentos de la Tuna en detalle" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Nuestros instrumentos</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="4">
+                    <img src="./FOTOS/photo_2023-09-29_14-37-26.jpg" alt="La Tuna actuando" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Música en vivo</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="5">
+                    <img src="./FOTOS/photo_2023-09-29_14-39-47.jpg" alt="La Tuna con los novios" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Con los novios</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="6">
+                    <img src="./FOTOS/photo_2023-09-29_14-39-54.jpg" alt="La Tuna grupo completo" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Grupo completo</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="7">
+                    <img src="./FOTOS/photo_2023-09-29_14-40-08.jpg" alt="La Tuna en evento" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Actuación en evento</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="8">
+                    <img src="./FOTOS/photo_2023-09-29_14-40-20.jpg" alt="La Tuna en fiesta" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Fiesta en directo</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="9">
+                    <img src="./FOTOS/photo_2023-10-21_18-05-52.jpg" alt="La Tuna tocando" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Serenata musical</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="10">
+                    <img src="./FOTOS/photo_2024-06-14_23-39-35.jpg" alt="La Tuna nocturna" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Actuación nocturna</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="11">
+                    <img src="./FOTOS/photo_2025-08-17_11-05-57.jpg" alt="La Tuna en traje de tuna completo" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>En traje de tuna</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="12">
+                    <img src="./FOTOS/photo_2026-06-14_02-09-19.jpg" alt="La Tuna en desfile con capa" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Desfile de gala</span>
+                    </div>
+                </div>
+                <div class="galeria__item animate-on-scroll" data-index="13">
+                    <img src="./FOTOS/photo_2026-07-29_11-39-06.jpg" alt="La Tuna reciente" loading="lazy">
+                    <div class="galeria__item-overlay">
+                        <span>Nuestro grupo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox__close" aria-label="Cerrar galería">&times;</button>
+            <button class="lightbox__prev" aria-label="Anterior">&#10094;</button>
+            <button class="lightbox__next" aria-label="Siguiente">&#10095;</button>
+            <div class="lightbox__content">
+                <img src="" alt="" id="lightboxImg">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- VÍDEOS -->
+    <!-- ============================================ -->
+    <section id="videos" class="section videos-section">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <p class="section__eyebrow">✦ En acción ✦</p>
+                <h2 class="section__title">Vídeos</h2>
+                <div class="section__divider"></div>
+                <p class="section__subtitle">Mira cómo sonamos en directo. La energía, la pasión y la emoción de una actuación en vivo.</p>
+            </div>
+
+            <div class="videos__grid animate-on-scroll">
+                <div class="video-card">
+                    <div class="video-card__wrapper">
+                        <video controls preload="metadata" poster="./FOTOS/photo_2026-06-14_02-09-19.jpg" class="video-card__player">
+                            <source src="./VIDEOS/WhatsApp Video 2026-07-19 at 11.39.37.mp4" type="video/mp4">
+                            Tu navegador no soporta la reproducción de vídeo.
+                        </video>
+                    </div>
+                    <h3 class="video-card__title">La Tuna en directo</h3>
+                    <p class="video-card__text">Así suena la Tuna en vivo. Emoción pura en cada nota.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TESTIMONIOS -->
+    <!-- ============================================ -->
+    <section id="testimonios" class="section testimonios">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <p class="section__eyebrow">✦ Lo que dicen nuestros clientes ✦</p>
+                <h2 class="section__title">Testimonios</h2>
+                <div class="section__divider"></div>
+            </div>
+
+            <div class="testimonios__grid">
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★★</div>
+                    <blockquote class="testimonio-card__quote">"Contratamos a La Tuna para nuestra boda y fue lo mejor que pudimos haber hecho. Mis suegras lloraron con la serenata, los niños se quedaron boquiabiertos con los trajes, y todos los invitados hablaron de la Tuna durante semanas. ¡Fue simplemente mágico!"</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">AG</div>
+                        <div>
+                            <p class="testimonio-card__name">Ana García y Carlos Ruiz</p>
+                            <p class="testimonio-card__event">Boda · Septiembre 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★★</div>
+                    <blockquote class="testimonio-card__quote">"La Tuna le hizo la serenata a mi madre por su 70 cumpleaños. Cuando abrió la ventana y los vio con las capas y las guitarras, no podía dejar de llorar de emoción. Ha sido el regalo más bonito que le hemos dado nunca."</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">MR</div>
+                        <div>
+                            <p class="testimonio-card__name">María Rodríguez</p>
+                            <p class="testimonio-card__event">Serenata · Cumpleaños · Junio 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★★</div>
+                    <blockquote class="testimonio-card__quote">"Los contramus de la comunión de nuestro hijo y fue espectacular. La entrada con música, los trajes espectaculares y las canciones que eligieron de nuestro cancionero personalizaron el acto a la perfección. Repetiremos seguro."</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">JM</div>
+                        <div>
+                            <p class="testimonio-card__name">Javier y Patricia Méndez</p>
+                            <p class="testimonio-card__event">Comunión · Octubre 2023</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★★</div>
+                    <blockquote class="testimonio-card__quote">"Contratamos La Tuna para la inauguración de nuestra tienda y fue un éxito total. La gente se detenía en la calle, grababan con el móvil y entraban a la tienda curiosos. Nos dieron una visibilidad increíble con mucho estilo."</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">FL</div>
+                        <div>
+                            <p class="testimonio-card__name">Francisco López</p>
+                            <p class="testimonio-card__event">Evento de empresa · Mayo 2025</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★★</div>
+                    <blockquote class="testimonio-card__quote">"Queríamos algo especial para la boda de nuestra hija y La Tuna superó todas nuestras expectativas. La serenata bajo el balcón fue de cine. Hasta los abuelos se pusieron a bailar con los pasodobles."</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">CM</div>
+                        <div>
+                            <p class="testimonio-card__name">Carmen Martín</p>
+                            <p class="testimonio-card__event">Boda · Julio 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★☆</div>
+                    <blockquote class="testimonio-card__quote">"Contratamos La Tuna para la comunión de nuestra hija. El repertorio estuvo genial y los niños se lo pasaron pipa. Solo le pongo 4 estrellas porque tardaron un poquito en montarse, pero una vez que empezaron fue espectacular."</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">LR</div>
+                        <div>
+                            <p class="testimonio-card__name">Laura Romero</p>
+                            <p class="testimonio-card__event">Comunión · Marzo 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★★</div>
+                    <blockquote class="testimonio-card__quote">"Llevaba meses buscando cómo sorprender a mi padre en su jubilación. La Tuna apareció en el restaurante y mi padre no podía creerlo. Las lágrimas de emoción no se podían contener. Fue el mejor día de su vida."</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">PG</div>
+                        <div>
+                            <p class="testimonio-card__name">Pablo García</p>
+                            <p class="testimonio-card__event">Sorpresa · Jubilación · Enero 2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★☆</div>
+                    <blockquote class="testimonio-card__quote">"La Tuna animó nuestra feria gastronómica y el ambiente que crearon fue increíble. La gente no paraba de sacar fotos. Hubiese estado bien que hubiesen durado más, pero la calidad musical es impresionante."</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">AS</div>
+                        <div>
+                            <p class="testimonio-card__name">Antonio Sánchez</p>
+                            <p class="testimonio-card__event">Evento gastronómico · Septiembre 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★★</div>
+                    <blockquote class="testimonio-card__quote">"Mis amigas organizaron una serenata sorpresa para mi despedida de soltera. Cuando escuché la primera nota me puse a llorar. Cantaron canciones que creía que nadie recordaba. Fue mágico y lleno de sentimiento."</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">EF</div>
+                        <div>
+                            <p class="testimonio-card__name">Elena Flores</p>
+                            <p class="testimonio-card__event">Despedida de soltera · Abril 2026</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonio-card animate-on-scroll">
+                    <div class="testimonio-card__stars">★★★★☆</div>
+                    <blockquote class="testimonio-card__quote">"Contraté La Tuna para mi boda civil. El estilo y la elegancia de los trajes encantaron a todos. La música durante la ceremonia fue preciosa. Solo eché en falta más ritmo en el baile, pero en general muy recomendable."</blockquote>
+                    <div class="testimonio-card__author">
+                        <div class="testimonio-card__avatar">DH</div>
+                        <div>
+                            <p class="testimonio-card__name">Diana Herrera</p>
+                            <p class="testimonio-card__event">Boda civil · Junio 2026</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CONTACTO -->
+    <!-- ============================================ -->
+    <section id="contacto" class="section contacto">
+        <div class="container">
+            <div class="section__header animate-on-scroll">
+                <p class="section__eyebrow">✦ Hablemos ✦</p>
+                <h2 class="section__title">Contacto</h2>
+                <div class="section__divider"></div>
+                <p class="section__subtitle">¿Quieres que La Tuna sea parte de tu evento? Escríbenos y te respondemos en menos de 24 horas.</p>
+            </div>
+
+            <div class="contacto__grid">
+                <div class="contacto__info animate-on-scroll">
+                    <div class="contacto__personas">
+                        <div class="contacto__persona">
+                            <div class="contacto__persona-icon">👤</div>
+                            <h3 class="contacto__persona-name">Pedro</h3>
+                            <p class="contacto__persona-role">Contacto principal</p>
+                            <a href="tel:+34622358110" class="contacto__persona-phone">📞 +34 622 358 110</a>
+                            <a href="https://wa.me/34622358110" class="contacto__persona-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+                        </div>
+                        <div class="contacto__persona">
+                            <div class="contacto__persona-icon">👤</div>
+                            <h3 class="contacto__persona-name">Miguel</h3>
+                            <p class="contacto__persona-role">Contacto secundario</p>
+                            <a href="tel:+34666444059" class="contacto__persona-phone">📞 +34 666 44 40 59</a>
+                            <a href="https://wa.me/34666444059" class="contacto__persona-wa" target="_blank" rel="noopener">💬 WhatsApp</a>
+                        </div>
+                    </div>
+
+                    <div class="contacto__whatsapp">
+                        <a href="https://wa.me/34622358110?text=Hola%2C%20me%20interesa%20contratar%20La%20Tuna%20para%20un%20evento" class="btn btn--primary btn--lg btn--full" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Enviar mensaje por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contacto__form animate-on-scroll">
+                    <form id="contactForm" class="form" action="https://formsubmit.co/brigadiespiter@hotmail.com" method="POST">
+                        <input type="hidden" name="_next" value="">
+                        <input type="hidden" name="_captcha" value="false">
+                        <div class="form__group">
+                            <label for="nombre" class="form__label">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" class="form__input" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="email" class="form__label">Email</label>
+                            <input type="email" id="email" name="email" class="form__input" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="form__group">
+                            <label for="telefono" class="form__label">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" class="form__input" placeholder="+34 600 000 000">
+                        </div>
+                        <div class="form__group">
+                            <label for="evento" class="form__label">Tipo de evento</label>
+                            <select id="evento" name="evento" class="form__input form__select">
+                                <option value="">Selecciona un tipo de evento</option>
+                                <option value="boda">Boda</option>
+                                <option value="cumpleanos">Cumpleaños</option>
+                                <option value="comunion">Comunión</option>
+                                <option value="serenata">Serenata</option>
+                                <option value="empresa">Evento de empresa</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div class="form__group">
+                            <label for="fecha" class="form__label">Fecha del evento</label>
+                            <input type="date" id="fecha" name="fecha" class="form__input">
+                        </div>
+                        <div class="form__group">
+                            <label for="mensaje" class="form__label">Cuéntanos tu evento</label>
+                            <textarea id="mensaje" name="mensaje" class="form__input form__textarea" placeholder="Cuéntanos los detalles de tu evento: número de invitados, lugar, preferencias musicales…" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--lg btn--full">
+                            📩 Enviar consulta
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map placeholder -->
+            <div class="contacto__map animate-on-scroll">
+                <div class="contacto__map-placeholder">
+                    <span class="contacto__map-icon">📍</span>
+                    <p>Andalucía, España</p>
+                    <p class="contacto__map-small">Andalucía, Extremadura y sur de Castilla-La Mancha</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER -->
+    <!-- ============================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <a href="#inicio" class="footer__logo">
+                        <span class="footer__logo-icon">🎵</span>
+                        <span class="footer__logo-text">La Tuna</span>
+                    </a>
+                    <p class="footer__tagline">Donde la tradición se convierte en emoción. Música en vivo para bodas, comuniones, serenatas y eventos.</p>
+                </div>
+
+                <div class="footer__links">
+                    <h4 class="footer__heading">Navegación</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#experiencia">La Experiencia</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#cancionero">Cancionero</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__links">
+                    <h4 class="footer__heading">Servicios</h4>
+                    <ul>
+                        <li><a href="#servicios">Bodas</a></li>
+                        <li><a href="#servicios">Cumpleaños</a></li>
+                        <li><a href="#servicios">Comuniones</a></li>
+                        <li><a href="#servicios">Serenatas</a></li>
+                        <li><a href="#servicios">Eventos de Empresa</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer__contact">
+                    <h4 class="footer__heading">Contacto</h4>
+                    <p>📞 Pedro: <a href="tel:+34622358110">+34 622 358 110</a> | Miguel: <a href="tel:+34666444059">+34 666 44 40 59</a></p>
+                    <p>👤 Pedro (Principal) | Miguel</p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link" aria-label="Facebook" title="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" class="footer__social-link" aria-label="Instagram" title="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                        <a href="#" class="footer__social-link" aria-label="YouTube" title="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                        <a href="https://wa.me/34622358110" class="footer__social-link" aria-label="WhatsApp" title="WhatsApp" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <p>&copy; 2026 La Tuna — Todos los derechos reservados.</p>
+                <p class="footer__credits">Hecho con ❤️ y música tradicional</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/34622358110?text=Hola%2C%20me%20interesa%20contratar%20La%20Tuna%20para%20un%20evento" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="main.js"></script>
+</body>
+</html>
