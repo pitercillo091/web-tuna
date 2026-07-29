@@ -1041,8 +1041,11 @@ strong {
    VÍDEOS
    ============================================ */
 .videos__grid {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .video-card {
@@ -1050,7 +1053,6 @@ strong {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
     overflow: hidden;
-    max-width: 800px;
     width: 100%;
     transition: all var(--transition-normal);
 }
@@ -1739,6 +1741,10 @@ a.contacto__persona-wa:hover {
     }
 
     /* Video responsive */
+    .videos__grid {
+        grid-template-columns: 1fr;
+    }
+
     .video__container {
         max-width: 100%;
     }
