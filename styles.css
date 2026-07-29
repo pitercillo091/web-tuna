@@ -1738,18 +1738,46 @@ a.contacto__persona-wa:hover {
         height: 28px;
     }
 
-    /* Cobertura responsive */
-    #mapa-andalucia {
-        height: 350px;
+    /* Video responsive */
+    .video__container {
+        max-width: 100%;
     }
 
-    .cobertura__provincias {
-        gap: 6px;
+    video {
+        max-width: 100%;
+        height: auto;
     }
 
-    .cobertura__provincias span {
-        padding: 6px 12px;
-        font-size: 0.8rem;
+    /* Form responsive */
+    .form__input,
+    .form__select {
+        font-size: 16px; /* Prevent iOS zoom */
+    }
+
+    /* Section headers */
+    .section__eyebrow {
+        font-size: 0.75rem;
+    }
+
+    /* Parallax transitions - disable fixed on mobile */
+    .parallax-transition::before {
+        background-attachment: scroll;
+    }
+
+    .parallax-transition__quote {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+
+    /* Hero text centering on mobile */
+    .hero__content {
+        padding: var(--space-md);
+        text-align: center;
+    }
+
+    .hero__tagline {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
     }
 }
 
@@ -1761,6 +1789,7 @@ a.contacto__persona-wa:hover {
 
     .hero__subtitle {
         font-size: 0.95rem;
+        padding: 0 0.5rem;
     }
 
     .section__title {
@@ -1770,6 +1799,26 @@ a.contacto__persona-wa:hover {
     .btn--lg {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
+    }
+
+    .contacto__personas {
+        grid-template-columns: 1fr;
+    }
+
+    .contacto__persona {
+        padding: var(--space-md);
+    }
+
+    .header__logo-img {
+        height: 36px;
+    }
+
+    .header__logo-text {
+        font-size: 1.2rem;
+    }
+
+    #mapa-andalucia {
+        height: 280px;
     }
 }
 
@@ -2005,6 +2054,60 @@ a.contacto__persona-wa:hover {
     margin: 0 auto var(--space-xl);
 }
 
+
+
+
+/* ============================================
+   TOUCH-FRIENDLY MOBILE STYLES
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        min-height: 48px;
+        min-width: 48px;
+    }
+
+    .header__nav-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .servicio-card__cta {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .galeria__item {
+        cursor: pointer;
+    }
+}
+
+/* Prevent horizontal scroll on mobile */
+html {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Smooth scroll for all */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Safe area for notch devices */
+@supports (padding: env(safe-area-inset-bottom)) {
+    .whatsapp-float {
+        bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+
+    .footer {
+        padding-bottom: calc(var(--space-2xl) + env(safe-area-inset-bottom));
+    }
+}
 
 @media print {
     .header,
