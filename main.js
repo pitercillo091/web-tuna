@@ -182,8 +182,12 @@
         initGalleryData();
 
         galleryItems.forEach(function (item, index) {
-            item.addEventListener('click', function () {
-                openLightbox(index);
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                var img = item.querySelector('img');
+                if (img && img.src) {
+                    window.open(img.src, '_blank');
+                }
             });
         });
 
