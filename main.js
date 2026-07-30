@@ -259,6 +259,20 @@
     }
 
     // ============================================
+    // HERO IMAGE CAROUSEL
+    // ============================================
+    function initHeroCarousel() {
+        var slides = document.querySelectorAll('.hero__bg-img');
+        if (slides.length <= 1) return;
+        var current = 0;
+        setInterval(function() {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
+    }
+
+    // ============================================
     // CONTACT FORM (Visual Feedback)
     // ============================================
     function setupContactForm() {
@@ -412,6 +426,7 @@
         setupEventListeners();
         setupScrollAnimations();
         initHeroAnimation();
+        initHeroCarousel();
         handleHeaderScroll();
         updateActiveNav();
         initMapaAndalucia();
