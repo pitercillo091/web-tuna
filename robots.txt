@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /BORRADOR_1/
+
+Sitemap: https://aquiestalatuna.es/sitemap.xml
+
+# La Tuna - Música en vivo para bodas y eventos en Andalucía
+# https://aquiestalatuna.es
