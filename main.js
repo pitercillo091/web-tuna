@@ -285,23 +285,41 @@
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Visual feedback
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
 
-            submitBtn.innerHTML = '✅ ¡Mensaje enviado!';
-            submitBtn.style.background = '#25D366';
+            // Show loading
+            submitBtn.innerHTML = '⏳ Enviando...';
             submitBtn.disabled = true;
 
-            // Reset form
-            contactForm.reset();
+            // Send data to FormSubmit.co via fetch
+            const formData = new FormData(contactForm);
 
-            // Restore button after delay
-            setTimeout(function () {
-                submitBtn.innerHTML = originalText;
-                submitBtn.style.background = '';
-                submitBtn.disabled = false;
-            }, 3000);
+            fetch('https://formsubmit.co/piter.pmap@gmail.com', {
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    submitBtn.innerHTML = '✅ ¡Mensaje enviado!';
+                    submitBtn.style.background = '#25D366';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Error en el envio');
+                }
+            })
+            .catch(function(error) {
+                submitBtn.innerHTML = '❌ Error. Intenta por WhatsApp';
+                submitBtn.style.background = '#e74c3c';
+                console.error('Form error:', error);
+            })
+            .finally(function() {
+                setTimeout(function () {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 4000);
+            });
         });
     }
 
