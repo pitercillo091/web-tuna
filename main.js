@@ -283,43 +283,25 @@
         if (!contactForm) return;
 
         contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-
-            // Show loading
+            
+            // Show loading feedback (but don't preventDefault!)
             submitBtn.innerHTML = '⏳ Enviando...';
+            submitBtn.style.background = '#f39c12';
             submitBtn.disabled = true;
-
-            // Send data to FormSubmit.co via fetch
-            const formData = new FormData(contactForm);
-
-            fetch('https://formsubmit.co/piter.pmap@gmail.com', {
-                method: 'POST',
-                body: formData
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    submitBtn.innerHTML = '✅ ¡Mensaje enviado!';
-                    submitBtn.style.background = '#25D366';
-                    contactForm.reset();
-                } else {
-                    throw new Error('Error en el envio');
-                }
-            })
-            .catch(function(error) {
-                submitBtn.innerHTML = '❌ Error. Intenta por WhatsApp';
-                submitBtn.style.background = '#e74c3c';
-                console.error('Form error:', error);
-            })
-            .finally(function() {
-                setTimeout(function () {
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.style.background = '';
-                    submitBtn.disabled = false;
-                }, 4000);
-            });
+            
+            // Restore after delay (form will submit normally via POST)
+            setTimeout(function () {
+                submitBtn.innerHTML = '✅ ¡Mensaje enviado!';
+                submitBtn.style.background = '#25D366';
+            }, 2000);
+            
+            setTimeout(function () {
+                submitBtn.innerHTML = originalText;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+            }, 5000);
         });
     }
 
