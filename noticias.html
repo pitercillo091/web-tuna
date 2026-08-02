@@ -163,25 +163,35 @@
         };
 
         function showArticle(key) {
-            const n = noticias[key];
+            var n = noticias[key];
             if (!n) return;
             var listado = document.getElementById('noticias-listado');
             var article = document.getElementById('noticia-completa');
             var content = document.getElementById('articleContent');
-            var imgs = '';
-            if (n.images) {
-                imgs = '<div class=\"article__gallery\">';
-                n.images.forEach(function(img) {
-                    imgs += '<img src=\"' + img + '\" alt=\"Foto del evento\" onclick=\"openLightbox(this.src)\" loading=\"lazy\">';
-                });
-                imgs += '</div>';
+            var html = '<a href="#noticias-listado" class="article__back" onclick="showListado()">← Volver a noticias</a>';
+            html += '<p class="article__date">' + n.date + '</p>';
+            html += '<h1 class="article__title">' + n.title + '</h1>';
+            
+            // Video (YouTube embed)
+            if (n.video) {
+                html += '<div style="margin:2rem 0;border-radius:12px;overflow:hidden;"><iframe width="100%" height="400" src="' + n.video + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px;"></iframe></div>';
             }
-            content.innerHTML = '<a href=\"#noticias-listado\" class=\"article__back\" onclick=\"showListado()\">← Volver a noticias</a>' +
-                '<p class=\"article__date\">' + n.date + '</p>' +
-                '<h1 class=\"article__title\">' + n.title + '</h1>' +
-                '<div class=\"article__content\">' + n.content + '</div>' +
-                '<h3 style=\"color:#fff;margin-top:2rem;\">Galería de la noche</h3>' + imgs +
-                '<a href=\"#noticias-listado\" class=\"article__back\" onclick=\"showListado()\">← Volver a noticias</a>';
+            
+            html += '<div class="article__content">' + n.content + '</div>';
+            
+            // Images gallery
+            if (n.images && n.images.length > 0) {
+                html += '<h3 style="color:#fff;margin-top:2rem;">Galería</h3>';
+                html += '<div class="article__gallery">';
+                n.images.forEach(function(img) {
+                    html += '<img src="' + img + '" alt="Foto del evento" onclick="openLightbox(this.src)" loading="lazy">';
+                });
+                html += '</div>';
+            }
+            
+            html += '<a href="#noticias-listado" class="article__back" onclick="showListado()">← Volver a noticias</a>';
+            
+            content.innerHTML = html;
             listado.style.display = 'none';
             article.style.display = 'block';
             window.scrollTo(0, 0);
