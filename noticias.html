@@ -76,7 +76,18 @@
     <section class="section" id="noticias-listado">
         <div class="container">
             <div class="news-grid">
-                <article class="news-card">
+                                <article class="news-card">
+                    <img src="./NOTICIAS/banos_2026/noche-romantica-banos.mp4" alt="Noche Romántica en Baños de la Encina" class="news-card__image" style="object-fit:cover;">
+                    <div class="news-card__body">
+                        <span class="news-card__tag">Eventos</span>
+                        <p class="news-card__date">20 junio 2026</p>
+                        <h2 class="news-card__title">La Tuna pone la banda sonora en la Noche Romántica de Baños de la Encina</h2>
+                        <p class="news-card__excerpt">Una velada mágica en uno de los Pueblos más Bonitos de España. Velas, música en vivo y romance por las calles del centro histórico.</p>
+                        <a href="#noticia-banos" class="news-card__link" onclick="showArticle('banos')">Leer más →</a>
+                    </div>
+                </article>
+
+<article class="news-card">
                     <img src="./NOTICIAS/MARMOLEJO_2026/760511311_1059220049973765_4642684815433732976_n.jpg" alt="Cena de los Mayores en Marmolejo" class="news-card__image">
                     <div class="news-card__body">
                         <span class="news-card__tag">Eventos</span>
@@ -127,6 +138,13 @@
 
     <script>
         const noticias = {
+                        banos: {
+                date: '20 junio 2026',
+                title: 'La Tuna pone la banda sonora en la Noche Romántica de Baños de la Encina',
+                content: '<p>Baños de la Encina se enamoró con su Noche Romántica, y nosotros tuvimos el honor de poner la banda sonora a esta velada tan especial. 🎶❤️</p><p>El centro histórico del pueblo se iluminó con la luz de cientos de velas, y nuestra tuna recorrió las calles tocando las canciones más románticas del repertorio. Fue un momento mágico donde la música, la luz y el amor se unieron para crear una noche inolvidable. 🌙✨</p><p>Agradecemos enormemente al <strong>Ayuntamiento de Baños de la Encina</strong> y a la red de <strong>Pueblos más Bonitos de España</strong> por confiar en nosotros para acompañar esta celebración. También a todos los establecimientos colaboradores que se volcaron para que esta noche fuera posible. 🙏</p><p>Mil gracias a todas las parejas que compartieron su amor con nosotros mientras cantábamos. Cada sonrisa, cada abrazo y cada lágrima de emoción nos recordaron por qué hacemos lo que hacemos. ❤️</p><p>¡Por muchas noches románticas así! 🥂🎶</p>',
+                images: [],
+                video: './NOTICIAS/banos_2026/noche-romantica-banos.mp4'
+            },
             marmolejo: {
                 date: '31 julio 2026',
                 title: 'La Tuna ameniza la "Cena de los Mayores 2026" en Marmolejo',
