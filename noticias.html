@@ -168,6 +168,10 @@
                     './NOTICIAS/virgen_gracia_2026/virgen-gracia-3.jpg',
                     './NOTICIAS/virgen_gracia_2026/virgen-gracia-4.jpg',
                     './NOTICIAS/virgen_gracia_2026/virgen-gracia-5.jpg'
+                ],
+                videos: [
+                    'https://www.youtube.com/embed/vfG-0rNZeWo',
+                    'https://www.youtube.com/embed/zdxC6t39-EM'
                 ]
             },
             marmolejo: {
@@ -198,7 +202,11 @@
             html += '<h1 class="article__title">' + n.title + '</h1>';
             
             // Video (YouTube embed)
-            if (n.video) {
+            if (n.videos && n.videos.length > 0) {
+                n.videos.forEach(function(v) {
+                    html += '<div style="margin:1.5rem 0;border-radius:12px;overflow:hidden;"><iframe width="100%" height="400" src="' + v + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px;"></iframe></div>';
+                });
+            } else if (n.video) {
                 html += '<div style="margin:2rem 0;border-radius:12px;overflow:hidden;"><iframe width="100%" height="400" src="' + n.video + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius:12px;"></iframe></div>';
             }
             
