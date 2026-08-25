@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zona privada de los miembros de LA TUNA.">
+    <title>Zona Privada — LA TUNA</title>
+    <link rel="icon" href="./LOGO.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="zona-privada.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+</head>
+<body class="private-page">
+    <header id="header" class="header">
+        <div class="header__container">
+            <a href="./index.html" class="header__logo">
+                <img src="./LOGO.jpg" alt="Escudo La Tuna" class="header__logo-img">
+                <span class="header__logo-text">LA TUNA</span>
+            </a>
+            <nav class="header__nav" id="mainNav">
+                <ul class="header__nav-list">
+                    <li><a href="./index.html" class="header__nav-link">Web pública</a></li>
+                    <li><a href="./zona-privada.html" class="header__nav-link active">Zona Privada</a></li>
+                </ul>
+                <button id="logoutBtn" class="header__nav-cta private-logout" type="button" hidden>Cerrar sesión</button>
+            </nav>
+            <button class="header__hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+        </div>
+    </header>
+
+    <main class="private-main">
+        <section id="authView" class="private-section private-auth-view">
+            <div class="private-shell private-auth-shell">
+                <div class="private-heading">
+                    <p class="section__eyebrow">✦ Solo para miembros ✦</p>
+                    <h1 class="section__title">Zona Privada</h1>
+                    <div class="section__divider"></div>
+                    <p class="section__subtitle">El calendario y la información interna de LA TUNA, en un espacio seguro y reservado.</p>
+                </div>
+                <div class="private-auth-grid">
+                    <div class="private-card private-auth-card">
+                        <div class="private-tabs" role="tablist">
+                            <button class="private-tab active" data-auth-tab="login" type="button">Iniciar sesión</button>
+                            <button class="private-tab" data-auth-tab="register" type="button">Crear cuenta</button>
+                        </div>
+                        <div id="authMessage" class="private-message" role="status" aria-live="polite"></div>
+                        <form id="loginForm" class="private-form">
+                            <label for="loginEmail">Correo electrónico</label>
+                            <input id="loginEmail" name="email" type="email" autocomplete="email" required>
+                            <label for="loginPassword">Contraseña</label>
+                            <input id="loginPassword" name="password" type="password" autocomplete="current-password" minlength="8" required>
+                            <button class="btn btn--primary btn--full" type="submit">Entrar</button>
+                            <button id="forgotPasswordBtn" class="private-link-button" type="button">¿Has olvidado tu contraseña?</button>
+                        </form>
+                        <form id="registerForm" class="private-form" hidden>
+                            <div class="private-form-row">
+                                <div><label for="registerNombre">Nombre</label><input id="registerNombre" name="nombre" autocomplete="given-name" required></div>
+                                <div><label for="registerApellidos">Apellidos</label><input id="registerApellidos" name="apellidos" autocomplete="family-name" required></div>
+                            </div>
+                            <label for="registerEmail">Correo electrónico</label>
+                            <input id="registerEmail" name="email" type="email" autocomplete="email" required>
+                            <div class="private-form-row">
+                                <div><label for="registerPassword">Contraseña</label><input id="registerPassword" name="password" type="password" autocomplete="new-password" minlength="8" required></div>
+                                <div><label for="registerPassword2">Repetir contraseña</label><input id="registerPassword2" name="password2" type="password" autocomplete="new-password" minlength="8" required></div>
+                            </div>
+                            <details class="private-optional"><summary>Datos internos opcionales</summary>
+                                <label for="registerApodo">Apodo o nombre de tuno</label><input id="registerApodo" name="apodo">
+                                <div class="private-form-row"><div><label for="registerInstrumento">Instrumento</label><input id="registerInstrumento" name="instrumento"></div><div><label for="registerPromocion">Promoción/año</label><input id="registerPromocion" name="promocion"></div></div>
+                                <label for="registerTelefono">Teléfono</label><input id="registerTelefono" name="telefono" type="tel" autocomplete="tel">
+                            </details>
+                            <label class="private-check"><input id="registerConsent" type="checkbox" required> <span>Confirmo que soy miembro de LA TUNA.</span></label>
+                            <button class="btn btn--primary btn--full" type="submit">Solicitar registro</button>
+                        </form>
+                    </div>
+                    <aside class="private-card private-note-card"><span class="private-card-icon">🎼</span><h2>Un espacio para la tuna</h2><p>Los registros quedan pendientes de aprobación. Solo las cuentas autorizadas podrán consultar los eventos publicados por el administrador.</p><p class="private-muted">Si acabas de registrarte, espera a que el administrador active tu acceso.</p></aside>
+                </div>
+            </div>
+        </section>
+
+        <section id="memberView" class="private-section" hidden>
+            <div class="private-shell">
+                <div class="private-topbar"><div><p class="section__eyebrow">✦ Agenda interna ✦</p><h1 id="welcomeTitle">Bienvenido</h1><p id="memberStatus" class="private-muted"></p></div><button id="refreshEventsBtn" class="btn btn--outline" type="button">Actualizar</button></div>
+                <div id="memberMessage" class="private-message" role="status" aria-live="polite"></div>
+                <div class="private-summary-grid"><article class="private-card private-summary-card private-summary-feature"><span>Próximo evento</span><strong id="nextEventTitle">Sin eventos publicados</strong><small id="nextEventMeta">—</small></article><article class="private-card private-summary-card"><span>Próximos eventos</span><strong id="eventCount">0</strong><small>en la agenda</small></article><article class="private-card private-summary-card"><span>Acceso</span><strong id="roleLabel">Miembro</strong><small>cuenta autorizada</small></article></div>
+                <div class="private-calendar-card private-card"><div class="private-calendar-heading"><div><h2>Calendario de la tuna</h2><p class="private-muted">Consulta actuaciones, ensayos, reuniones y viajes.</p></div></div><div id="calendar"></div></div>
+                <div id="eventModal" class="private-modal" hidden><div class="private-modal__backdrop" data-close-modal></div><div class="private-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle"><button class="private-modal__close" data-close-modal type="button" aria-label="Cerrar">×</button><p id="eventModalCategory" class="section__eyebrow"></p><h2 id="eventModalTitle"></h2><dl class="private-event-details"><div><dt>Fecha</dt><dd id="eventModalDate"></dd></div><div><dt>Horario</dt><dd id="eventModalTime"></dd></div><div><dt>Lugar</dt><dd id="eventModalPlace"></dd></div><div><dt>Estado</dt><dd id="eventModalStatus"></dd></div></dl><p id="eventModalDescription"></p></div></div>
+            </div>
+        </section>
+
+        <section id="adminView" class="private-section" hidden>
+            <div class="private-shell"><div class="private-topbar"><div><p class="section__eyebrow">✦ Administración ✦</p><h1>Panel de administración</h1><p class="private-muted">Gestiona accesos y eventos de la agenda interna.</p></div><button id="newEventBtn" class="btn btn--primary" type="button">+ Nuevo evento</button></div><div id="adminMessage" class="private-message" role="status" aria-live="polite"></div>
+                <div class="private-calendar-card private-card"><div class="private-calendar-heading"><div><h2>Vista previa de la agenda</h2><p class="private-muted">Aquí puedes comprobar cómo se mostrará el calendario a los miembros.</p></div></div><div id="adminCalendar"></div></div>
+                <div class="private-admin-grid"><div class="private-card"><h2>Solicitudes y miembros</h2><div id="membersList" class="private-list"><p class="private-muted">Cargando…</p></div></div><div class="private-card"><h2>Eventos publicados</h2><div id="adminEventsList" class="private-list"><p class="private-muted">Cargando…</p></div></div></div>
+                <div id="eventEditor" class="private-card private-editor" hidden><div class="private-editor-heading"><h2 id="eventEditorTitle">Nuevo evento</h2><button id="cancelEventBtn" class="private-link-button" type="button">Cancelar</button></div><form id="eventForm" class="private-form"><input id="eventId" type="hidden"><div class="private-form-row"><div><label for="eventTitle">Título</label><input id="eventTitle" required></div><div><label for="eventCategory">Categoría</label><select id="eventCategory"><option value="ensayo">Ensayo</option><option value="actuacion">Actuación</option><option value="reunion">Reunión</option><option value="viaje">Viaje</option><option value="evento_privado">Evento privado</option><option value="otros">Otros</option></select></div></div><div class="private-form-row private-form-row--three"><div><label for="eventDate">Fecha</label><input id="eventDate" type="date" required></div><div><label for="eventStart">Hora inicio</label><input id="eventStart" type="time" required></div><div><label for="eventEnd">Hora fin</label><input id="eventEnd" type="time"></div></div><label for="eventPlace">Lugar</label><input id="eventPlace" required><label for="eventDescription">Descripción y observaciones</label><textarea id="eventDescription" rows="4"></textarea><div class="private-form-row"><div><label for="eventStatus">Estado</label><select id="eventStatus"><option value="proximo">Próximo</option><option value="hoy">Hoy</option><option value="modificado">Modificado</option><option value="cancelado">Cancelado</option></select></div><div class="private-editor-checks"><label class="private-check"><input id="eventVisible" type="checkbox" checked> Visible para miembros</label><label class="private-check"><input id="eventFeatured" type="checkbox"> Destacar como próximo</label></div></div><button class="btn btn--primary" type="submit">Guardar evento</button></form></div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"><div class="container"><div class="footer__bottom"><p>© 2026 LA TUNA — Zona Privada</p><a href="./index.html">Volver a la web pública</a></div></div></footer>
+    <script src="zona-privada.js"></script>
+</body>
+</html>
