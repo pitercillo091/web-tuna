@@ -115,6 +115,15 @@
         $('#eventModalTime').textContent = `${formatTime(event.hora_inicio)}${event.hora_fin ? ' – ' + formatTime(event.hora_fin) : ''}`;
         $('#eventModalPlace').textContent = event.lugar;
         $('#eventModalStatus').textContent = event.estado;
+        const image = $('#eventModalImage');
+        if (event.imagen_url) {
+            image.src = event.imagen_url;
+            image.alt = `Imagen de ${event.lugar}`;
+            image.hidden = false;
+        } else {
+            image.removeAttribute('src');
+            image.hidden = true;
+        }
         $('#eventModalDescription').textContent = event.descripcion || 'Sin observaciones adicionales.';
         $('#eventModal').hidden = false;
     }
