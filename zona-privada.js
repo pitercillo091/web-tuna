@@ -223,6 +223,9 @@
     }
 
     function setup() {
+        // El modal debe vivir fuera de las vistas ocultables para funcionar también en administración.
+        const eventModal = $('#eventModal');
+        if (eventModal) document.body.appendChild(eventModal);
         const hamburger = $('#hamburger');
         const mainNav = $('#mainNav');
         if (hamburger && mainNav) {
