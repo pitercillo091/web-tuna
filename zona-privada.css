@@ -18,6 +18,7 @@
 .private-tab { color: var(--color-text-muted); background: transparent; border: 0; border-bottom: 2px solid transparent; padding: .7rem .3rem; cursor: pointer; font: inherit; font-weight: 600; }
 .private-tab.active { color: var(--color-text); border-bottom-color: var(--color-primary); }
 .private-form { display: grid; gap: .6rem; }
+.private-form[hidden], .private-section[hidden] { display: none !important; }
 .private-form label { color: var(--color-text-muted); font-size: .9rem; }
 .private-form input, .private-form select, .private-form textarea { width: 100%; padding: .8rem .9rem; background: #111; color: var(--color-text); border: 1px solid var(--color-border-light); border-radius: var(--radius-sm); font: inherit; }
 .private-form input:focus, .private-form select:focus, .private-form textarea:focus { outline: 2px solid rgba(153,0,0,.55); outline-offset: 1px; border-color: var(--color-primary); }
