@@ -61,6 +61,7 @@
 .private-editor-heading { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-md); }
 .private-editor-checks { display: grid; gap: .7rem; align-content: center; }
 .private-modal { position: fixed; inset: 0; z-index: 2000; display: grid; place-items: center; padding: var(--space-md); }
+.private-modal[hidden] { display: none !important; }
 .private-modal__backdrop { position: absolute; inset: 0; background: rgba(0,0,0,.8); }
 .private-modal__dialog { position: relative; max-width: 620px; width: 100%; background: var(--color-card); border: 1px solid var(--color-primary); border-radius: var(--radius-md); padding: var(--space-xl); box-shadow: var(--shadow-lg); }
 .private-modal__dialog h2 { font-family: var(--font-heading); font-size: 2rem; margin-bottom: var(--space-lg); }

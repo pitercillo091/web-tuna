@@ -128,6 +128,10 @@
         $('#eventModal').hidden = false;
     }
 
+    function closeEventModal() {
+        $('#eventModal').hidden = true;
+    }
+
     async function register(event) {
         event.preventDefault();
         const form = new FormData(event.currentTarget);
@@ -235,7 +239,10 @@
         }
         $$('.private-tab').forEach((button) => button.addEventListener('click', () => setAuthTab(button.dataset.authTab)));
         $('#loginForm').addEventListener('submit', login); $('#registerForm').addEventListener('submit', register); $('#forgotPasswordBtn').addEventListener('click', forgotPassword); $('#logoutBtn').addEventListener('click', logout);
-        $('#refreshEventsBtn').addEventListener('click', loadEvents); $('[data-close-modal]').addEventListener('click', () => { $('#eventModal').hidden = true; }); $('#newEventBtn').addEventListener('click', () => { resetEventEditor(); $('#eventEditor').hidden = false; $('#eventEditor').scrollIntoView({ behavior: 'smooth', block: 'start' }); }); $('#cancelEventBtn').addEventListener('click', resetEventEditor); $('#eventForm').addEventListener('submit', saveEvent);
+        $('#refreshEventsBtn').addEventListener('click', loadEvents);
+        $$('[data-close-modal]').forEach((element) => element.addEventListener('click', closeEventModal));
+        document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeEventModal(); });
+        $('#newEventBtn').addEventListener('click', () => { resetEventEditor(); $('#eventEditor').hidden = false; $('#eventEditor').scrollIntoView({ behavior: 'smooth', block: 'start' }); }); $('#cancelEventBtn').addEventListener('click', resetEventEditor); $('#eventForm').addEventListener('submit', saveEvent);
         client.auth.onAuthStateChange((_event, session) => { currentUser = session ? session.user : null; if (!currentUser) showView(views.auth); });
         loadSession().catch((error) => { showView(views.auth); setMessage($('#authMessage'), errorText(error), 'error'); });
     }
