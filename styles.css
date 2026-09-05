@@ -279,6 +279,7 @@ strong {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
+    flex-wrap: nowrap;
 }
 
 .header__nav-link {
@@ -288,6 +289,7 @@ strong {
     padding: var(--space-xs) 0;
     position: relative;
     transition: color var(--transition-fast);
+    white-space: nowrap;
 }
 
 .header__nav-link::after {
@@ -1632,12 +1634,19 @@ a.contacto__persona-wa:hover {
 
 /* Tablet */
 @media (max-width: 1024px) {
+    .header__nav { gap: 0.55rem; }
+
     .header__nav-list {
-        gap: var(--space-xs);
+        gap: 0.55rem;
     }
 
     .header__nav-link {
-        font-size: 0.8rem;
+        font-size: 0.76rem;
+    }
+
+    .header__nav-cta {
+        padding: 0.45rem 0.7rem;
+        font-size: 0.76rem;
     }
 
     .footer__grid {
@@ -1836,6 +1845,17 @@ a.contacto__persona-wa:hover {
         font-size: 0.7rem;
         letter-spacing: 2px;
     }
+}
+
+/* Header desktop: one clean navigation row at intermediate widths */
+@media (min-width: 769px) and (max-width: 1400px) {
+    .header__logo-text { font-size: 1.3rem; }
+    .header__logo-img { height: 42px; }
+    .header__nav { gap: .4rem; }
+    .header__nav-list { gap: .38rem; }
+    .header__nav-link { font-size: .72rem; }
+    .header__nav-stunafy-icon { width: 20px; height: 20px; }
+    .header__nav-cta { padding: .4rem .55rem; font-size: .72rem; }
 }
 
 /* Small mobile */
