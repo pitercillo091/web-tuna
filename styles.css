@@ -306,6 +306,51 @@ strong {
     color: var(--color-text);
 }
 
+.header__nav-stunafy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-gold) !important;
+    font-weight: 600;
+}
+
+.header__nav-stunafy::after { background: var(--color-gold); }
+
+.header__nav-stunafy-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    border-radius: 6px;
+    transition: transform var(--transition-normal);
+}
+
+.header__nav-stunafy-name { white-space: nowrap; }
+
+.header__nav-stunafy-slogan {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.7rem);
+    right: 0;
+    width: max-content;
+    max-width: 280px;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid rgba(201, 168, 76, 0.35);
+    border-radius: var(--radius-sm);
+    background: rgba(26, 26, 26, 0.98);
+    color: var(--color-text-muted);
+    font-size: 0.74rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+    z-index: 1002;
+}
+
+.header__nav-stunafy:hover .header__nav-stunafy-slogan,
+.header__nav-stunafy:focus-visible .header__nav-stunafy-slogan { display: block; }
+
+.header__nav-stunafy:hover .header__nav-stunafy-icon { transform: rotate(-8deg) scale(1.08); }
+
 .header__nav-link:hover::after,
 .header__nav-link.active::after {
     width: 100%;
