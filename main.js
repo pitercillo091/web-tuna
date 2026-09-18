@@ -492,12 +492,16 @@
         const mapContainer = document.getElementById('mapa-andalucia');
         if (!mapContainer || typeof L === 'undefined') return;
 
-        // Centro geográfico de Andalucía
+        const coverageBounds = [[36.0, -7.55], [40.45, -1.4]];
+
+        // Centro geográfico de la zona de actuación
         const map = L.map('mapa-andalucia', {
             center: [37.5, -4.5],
             zoom: 7,
             minZoom: 6,
             maxZoom: 12,
+            maxBounds: [[35.45, -8.25], [41.05, -0.8]],
+            maxBoundsViscosity: 0.65,
             zoomControl: true,
             scrollWheelZoom: true,
             dragging: true,
@@ -505,20 +509,66 @@
             touchZoom: true
         });
 
-        // Capa oscura (CartoDB Dark Matter)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://carto.com/">CARTO</a> | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-            subdomains: 'abcd',
+        // Capa pública, oscurecida visualmente desde los estilos de la web
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            subdomains: 'abc',
             maxZoom: 19
         }).addTo(map);
+
+        L.control.scale({ imperial: false, position: 'bottomright' }).addTo(map);
+
+        // Zonas aproximadas de cobertura
+        const coverageRegions = [
+            {
+                name: 'Andalucía',
+                coordinates: [[38.05, -7.52], [38.42, -6.45], [38.22, -5.15], [38.2, -3.05], [37.9, -1.8], [37.2, -1.65], [36.68, -2.05], [36.28, -2.75], [36.0, -3.85], [36.08, -5.5], [36.4, -6.45], [36.0, -6.95], [36.7, -7.5], [37.45, -7.55]],
+                color: '#cc0000'
+            },
+            {
+                name: 'Extremadura',
+                coordinates: [[40.5, -7.5], [40.5, -5.2], [39.42, -5.0], [38.4, -5.5], [38.2, -7.5]],
+                color: '#b30000'
+            },
+            {
+                name: 'Sur de Castilla-La Mancha',
+                coordinates: [[39.9, -4.6], [39.9, -1.4], [38.2, -1.3], [38.0, -3.2], [38.2, -4.8]],
+                color: '#a40000'
+            }
+        ];
+
+        const coverageLayer = L.layerGroup().addTo(map);
+        coverageRegions.forEach(function (region) {
+            const area = L.polygon(region.coordinates, {
+                color: region.color,
+                weight: 1.5,
+                opacity: 0.8,
+                fillColor: region.color,
+                fillOpacity: 0.16,
+                lineJoin: 'round'
+            }).addTo(coverageLayer);
+
+            area.bindTooltip(region.name, {
+                sticky: true,
+                className: 'map-region-tooltip'
+            });
+
+            area.on('mouseover', function () {
+                area.setStyle({ weight: 2.5, fillOpacity: 0.27 });
+            });
+
+            area.on('mouseout', function () {
+                area.setStyle({ weight: 1.5, fillOpacity: 0.16 });
+            });
+        });
 
         // Marcador rojo personalizado
         const redIcon = L.divIcon({
             className: 'custom-marker',
-            html: '<div style="width:14px;height:14px;background:#CC0000;border:3px solid #fff;border-radius:50%;box-shadow:0 0 10px rgba(204,0,0,0.6);"></div>',
-            iconSize: [14, 14],
-            iconAnchor: [7, 7],
-            popupAnchor: [0, -12]
+            html: '<span class="tuna-map-marker"><span class="tuna-map-marker__core">♪</span></span>',
+            iconSize: [30, 40],
+            iconAnchor: [15, 36],
+            popupAnchor: [0, -32]
         });
 
         // Provincias de Andalucía
@@ -543,12 +593,42 @@
             L.marker([p.lat, p.lng], { icon: redIcon })
                 .addTo(map)
                 .bindPopup(
-                    '<strong>📍 ' + p.nombre + '</strong><br>' +
-                    '¡Llegamos aquí!<br>' +
-                    'Contacta con Pedro: <a href="https://wa.me/34622358110" target="_blank">622 358 110</a>'
+                    '<div class="map-popup"><strong>📍 ' + p.nombre + '</strong>' +
+                    '<span class="map-popup__coverage">Actuamos en esta zona</span>' +
+                    '<span class="map-popup__label">Contacta con nosotros</span>' +
+                    '<a href="tel:+34622358110">Pedro · 622 358 110</a>' +
+                    '<a href="tel:+34666444059">Miguel · 666 444 059</a>' +
+                    '<a href="tel:+34650318898">Francisco Javier · 650 318 898</a>' +
+                    '<a class="map-popup__whatsapp" href="https://wa.me/34622358110" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>' +
+                    '</div>'
                 );
         });
 
+        const legend = L.control({ position: 'bottomleft' });
+        legend.onAdd = function () {
+            const div = L.DomUtil.create('div', 'map-legend');
+            div.innerHTML = '<strong>Zona de actuación</strong><span><i></i> Provincias con cobertura</span>';
+            L.DomEvent.disableClickPropagation(div);
+            return div;
+        };
+        legend.addTo(map);
+
+        const resetView = L.control({ position: 'topright' });
+        resetView.onAdd = function () {
+            const button = L.DomUtil.create('button', 'map-reset');
+            button.type = 'button';
+            button.title = 'Ver toda la zona de cobertura';
+            button.setAttribute('aria-label', 'Ver toda la zona de cobertura');
+            button.innerHTML = '⌂';
+            L.DomEvent.disableClickPropagation(button);
+            L.DomEvent.on(button, 'click', function () {
+                map.fitBounds(coverageBounds, { padding: [18, 18], maxZoom: 7 });
+            });
+            return button;
+        };
+        resetView.addTo(map);
+
+        map.fitBounds(coverageBounds, { padding: [18, 18], maxZoom: 7 });
 
     }
 
