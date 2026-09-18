@@ -22,8 +22,14 @@
     const animateElements = document.querySelectorAll('.animate-on-scroll');
     const hero = document.querySelector('.hero');
     const contactForm = document.getElementById('contactForm');
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const finePointerQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const depthSections = document.querySelectorAll('#experiencia, #servicios, #galeria, #testimonios');
+    const visibleGalleryItems = new Set();
 
     let currentLightboxIndex = 0;
+    let heroPointerX = 0;
+    let heroPointerY = 0;
 
     // ============================================
     // HEADER SCROLL EFFECT
@@ -237,18 +243,136 @@
     }
 
     // ============================================
-    // HERO PARALLAX-LIKE EFFECT
+    // CINEMATIC PARALLAX
     // ============================================
     function handleHeroParallax() {
-        const scrollY = window.scrollY;
-        const heroHeight = hero ? hero.offsetHeight : 0;
+        if (reducedMotionQuery.matches) return;
 
-        if (scrollY < heroHeight && hero) {
-            const bgImg = hero.querySelector('.hero__bg-img');
-            if (bgImg) {
-                bgImg.style.transform = 'scale(1.1) translateY(' + (scrollY * 0.15) + 'px)';
+        const viewportHeight = window.innerHeight || 1;
+        const isCompact = window.innerWidth <= 768;
+
+        if (hero) {
+            const heroHeight = hero.offsetHeight || viewportHeight;
+            const progress = Math.min(Math.max(window.scrollY / heroHeight, 0), 1);
+            const backgroundTravel = progress * heroHeight * (isCompact ? 0.08 : 0.18);
+            const contentTravel = progress * heroHeight * (isCompact ? 0.015 : 0.055);
+
+            hero.style.setProperty('--hero-bg-y', backgroundTravel.toFixed(2) + 'px');
+            hero.style.setProperty('--hero-content-y', contentTravel.toFixed(2) + 'px');
+            hero.style.setProperty('--hero-pointer-x', (isCompact ? 0 : heroPointerX * 14).toFixed(2) + 'px');
+            hero.style.setProperty('--hero-pointer-y', (isCompact ? 0 : heroPointerY * 9).toFixed(2) + 'px');
+            hero.style.setProperty('--hero-content-opacity', String(Math.max(0.2, 1 - progress * 0.92)));
+            hero.style.setProperty('--hero-scroll-opacity', String(Math.max(0, 1 - progress * 2.4)));
+        }
+
+        depthSections.forEach(function (section) {
+            const rect = section.getBoundingClientRect();
+            if (rect.bottom < -100 || rect.top > viewportHeight + 100) return;
+
+            const sectionCenter = rect.top + rect.height / 2;
+            const distance = (viewportHeight / 2 - sectionCenter) / (viewportHeight + rect.height);
+            const glowTravel = distance * (isCompact ? 36 : 110);
+            const contentTravel = distance * (isCompact ? 2 : 10);
+
+            section.style.setProperty('--depth-glow-y', glowTravel.toFixed(2) + 'px');
+            section.style.setProperty('--depth-content-y', contentTravel.toFixed(2) + 'px');
+        });
+
+        if (!isCompact) {
+            visibleGalleryItems.forEach(function (item) {
+                const rect = item.getBoundingClientRect();
+                const itemCenter = rect.top + rect.height / 2;
+                const distance = (itemCenter - viewportHeight / 2) / (viewportHeight / 2 + rect.height / 2);
+                const clampedDistance = Math.max(-1, Math.min(1, distance));
+                item.style.setProperty('--gallery-image-y', (clampedDistance * -12).toFixed(2) + 'px');
+            });
+        }
+    }
+
+    function setupCinematicParallax() {
+        document.documentElement.classList.add('parallax-ready');
+
+        if (reducedMotionQuery.matches) {
+            document.documentElement.classList.add('parallax-reduced');
+            return;
+        }
+
+        if (hero) {
+            const atmosphere = document.createElement('div');
+            atmosphere.className = 'hero__atmosphere';
+            atmosphere.setAttribute('aria-hidden', 'true');
+            atmosphere.innerHTML = '<span></span><span></span><span></span>';
+            hero.appendChild(atmosphere);
+
+            const frame = document.createElement('div');
+            frame.className = 'hero__cinematic-frame';
+            frame.setAttribute('aria-hidden', 'true');
+            hero.appendChild(frame);
+
+            if (finePointerQuery.matches) {
+                hero.addEventListener('pointermove', function (event) {
+                    const rect = hero.getBoundingClientRect();
+                    heroPointerX = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+                    heroPointerY = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+                    requestParallaxFrame();
+                }, { passive: true });
+
+                hero.addEventListener('pointerleave', function () {
+                    heroPointerX = 0;
+                    heroPointerY = 0;
+                    requestParallaxFrame();
+                });
             }
         }
+
+        depthSections.forEach(function (section, index) {
+            section.classList.add('depth-section');
+            const glow = document.createElement('div');
+            glow.className = 'depth-section__glow depth-section__glow--' + (index % 2 === 0 ? 'left' : 'right');
+            glow.setAttribute('aria-hidden', 'true');
+            section.insertBefore(glow, section.firstChild);
+        });
+
+        if ('IntersectionObserver' in window) {
+            const galleryDepthObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        visibleGalleryItems.add(entry.target);
+                    } else {
+                        visibleGalleryItems.delete(entry.target);
+                    }
+                });
+            }, { rootMargin: '160px 0px' });
+
+            galleryItems.forEach(function (item) {
+                galleryDepthObserver.observe(item);
+            });
+        } else {
+            galleryItems.forEach(function (item) {
+                visibleGalleryItems.add(item);
+            });
+        }
+
+        if (finePointerQuery.matches) {
+            galleryItems.forEach(function (item) {
+                item.addEventListener('pointermove', function (event) {
+                    const rect = item.getBoundingClientRect();
+                    const x = (event.clientX - rect.left) / rect.width - 0.5;
+                    const y = (event.clientY - rect.top) / rect.height - 0.5;
+                    item.style.setProperty('--gallery-tilt-x', (y * -5).toFixed(2) + 'deg');
+                    item.style.setProperty('--gallery-tilt-y', (x * 6).toFixed(2) + 'deg');
+                    item.style.setProperty('--gallery-light-x', ((x + 0.5) * 100).toFixed(1) + '%');
+                    item.style.setProperty('--gallery-light-y', ((y + 0.5) * 100).toFixed(1) + '%');
+                }, { passive: true });
+
+                item.addEventListener('pointerleave', function () {
+                    item.style.setProperty('--gallery-tilt-x', '0deg');
+                    item.style.setProperty('--gallery-tilt-y', '0deg');
+                });
+            });
+        }
+
+        handleHeroParallax();
     }
 
     // ============================================
@@ -310,16 +434,20 @@
     // ============================================
     let ticking = false;
 
+    function requestParallaxFrame() {
+        if (ticking) return;
+
+        window.requestAnimationFrame(function () {
+            handleHeaderScroll();
+            updateActiveNav();
+            handleHeroParallax();
+            ticking = false;
+        });
+        ticking = true;
+    }
+
     function onScroll() {
-        if (!ticking) {
-            window.requestAnimationFrame(function () {
-                handleHeaderScroll();
-                updateActiveNav();
-                handleHeroParallax();
-                ticking = false;
-            });
-            ticking = true;
-        }
+        requestParallaxFrame();
     }
 
     // ============================================
@@ -353,6 +481,7 @@
             if (window.innerWidth > 768) {
                 closeMobileMenu();
             }
+            requestParallaxFrame();
         });
     }
 
@@ -429,6 +558,7 @@
     function init() {
         setupEventListeners();
         setupScrollAnimations();
+        setupCinematicParallax();
         initHeroAnimation();
         initHeroCarousel();
         handleHeaderScroll();
