@@ -234,7 +234,8 @@ strong {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    width: 100%;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 0 var(--space-md);
     height: 72px;
@@ -244,6 +245,7 @@ strong {
     display: flex;
     align-items: center;
     gap: var(--space-xs);
+    flex-shrink: 0;
     font-family: var(--font-heading);
     font-size: 1.4rem;
     font-weight: 600;
@@ -267,6 +269,7 @@ strong {
     font-weight: 700;
     font-size: 1.6rem;
     letter-spacing: 0.08em;
+    white-space: nowrap;
 }
 
 .header__nav {
