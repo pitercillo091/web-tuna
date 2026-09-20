@@ -87,6 +87,16 @@
     <section class="section" id="noticias-listado">
         <div class="container">
             <div class="news-grid">
+                <article class="news-card">
+                    <img src="./NOTICIAS/MARMOLEJO_2026/traslado-virgen-cabeza-marmolejo-2026.jpg" alt="La Rondalla de Lopera acompaña a la Virgen de la Cabeza en Marmolejo" class="news-card__image">
+                    <div class="news-card__body">
+                        <span class="news-card__tag">Tradición</span>
+                        <p class="news-card__date">20 septiembre 2026</p>
+                        <h2 class="news-card__title">La Rondalla de Lopera acompaña a la Virgen de la Cabeza en su Traslado Extraordinario por Marmolejo</h2>
+                        <p class="news-card__excerpt">La Rondalla de Lopera acompañó musicalmente a la Virgen de la Cabeza durante su Traslado Extraordinario por Marmolejo, en una jornada marcada por la música, la tradición y la devoción.</p>
+                        <a href="#noticia-traslado" class="news-card__link" onclick="showArticle('traslado')">Leer más →</a>
+                    </div>
+                </article>
                                 <article class="news-card">
                     <img src="./NOTICIAS/MARMOLEJO_2026/763824614_1059220159973754_8150757527574273512_n.jpg" alt="Cena de los Mayores en Marmolejo" class="news-card__image">
                     <div class="news-card__body">
@@ -162,6 +172,14 @@
 
     <script>
         const noticias = {
+            traslado: {
+                date: '20 septiembre 2026',
+                title: 'La Rondalla de Lopera acompaña a la Virgen de la Cabeza en su Traslado Extraordinario por Marmolejo',
+                content: '<p>La Rondalla de Lopera ha participado este domingo 20 de septiembre en una jornada muy especial en Marmolejo, acompañando musicalmente el <strong>Devotísimo Traslado Extraordinario de la Santísima Virgen de la Cabeza</strong>, organizado por la Real Cofradía de la Virgen de la Cabeza de Marmolejo dentro de sus actos y cultos extraordinarios.</p><p>La celebración adquiere este año un significado especialmente destacado, ya que 2026 marca el <strong>150 aniversario de la fundación de la Cofradía de Marmolejo</strong>, una efeméride para la que se viene desarrollando una programación conmemorativa especial.</p><h3>Andújar Peregrina</h3><p>La jornada comenzaba a las 10:00 horas con la concentración en la Casa de los Hermanos Mayores, Sebastián y Mercedes, y la recogida de las autoridades civiles y eclesiásticas. A las 10:30 horas daba comienzo el traslado de la Virgen desde la Ermita de Jesús hasta la Parroquia, recorrido en el que la música de la tuna ha estado presente acompañando a la comitiva durante todo el trayecto.</p><p>Para la Rondalla de Lopera ha supuesto una ocasión especialmente significativa, uniendo la tradición musical de la tuna con una de las manifestaciones religiosas y populares más arraigadas de Marmolejo. Bandurrias, laúdes y guitarras han acompañado a la Morenita en una mañana marcada por la devoción y la convivencia entre ambos pueblos.</p><p>Tras el traslado, el programa continuaba a las 12:00 horas con la Solemne Eucaristía, estando prevista a las 14:00 horas la Comida de Hermandad, como continuación de esta jornada extraordinaria.</p><p>Desde la Rondalla de Lopera queremos agradecer a la Real Cofradía de la Virgen de la Cabeza de Marmolejo, a sus Hermanos Mayores Sebastián y Mercedes y a todas las personas que han hecho posible nuestra participación el trato recibido y la oportunidad de formar parte de una celebración tan especial.</p><p>Una mañana para guardar en el recuerdo: música, tradición y devoción acompañando a la Virgen de la Cabeza por las calles de Marmolejo.</p><p><strong>¡Viva la Virgen de la Cabeza!</strong><br><strong>¡Viva la Morenita!</strong><br><strong>¡Y viva Marmolejo!</strong></p>',
+                images: [
+                    './NOTICIAS/MARMOLEJO_2026/traslado-virgen-cabeza-marmolejo-2026.jpg'
+                ]
+            },
                         banos: {
                 date: '20 junio 2026',
                 title: 'La Tuna pone la banda sonora en la Noche Romántica de Baños de la Encina',
