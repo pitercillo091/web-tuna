@@ -1,0 +1,87 @@
+{
+  "date": "2026-10-03",
+  "passed": 20,
+  "total": 20,
+  "outcomes": [
+    {
+      "name": "Ten songs and five canonical characters exist",
+      "status": "PASS"
+    },
+    {
+      "name": "Start, brief, movement and diagonal normalization",
+      "status": "PASS"
+    },
+    {
+      "name": "Keyboard cannot cross furniture or map boundaries",
+      "status": "PASS"
+    },
+    {
+      "name": "Touch paths avoid all colliders and find every pickup",
+      "status": "PASS"
+    },
+    {
+      "name": "An item is only scored once",
+      "status": "PASS"
+    },
+    {
+      "name": "The stage refuses incomplete equipment",
+      "status": "PASS"
+    },
+    {
+      "name": "Pause freezes movement, clock, health and notes",
+      "status": "PASS"
+    },
+    {
+      "name": "Time limit causes defeat and retry resets everything",
+      "status": "PASS"
+    },
+    {
+      "name": "Moving puddles inflict damage with immunity between collisions",
+      "status": "PASS"
+    },
+    {
+      "name": "Perfect notes score and combos increase rewards",
+      "status": "PASS"
+    },
+    {
+      "name": "Good timing is accepted inside the calm hit window",
+      "status": "PASS"
+    },
+    {
+      "name": "Wrong lanes and expired notes reset the combo",
+      "status": "PASS"
+    },
+    {
+      "name": "Missing a song causes defeat",
+      "status": "PASS"
+    },
+    {
+      "name": "Health depletion causes defeat",
+      "status": "PASS"
+    },
+    {
+      "name": "All ten songs are completed in order in BOTH difficulties",
+      "status": "PASS"
+    },
+    {
+      "name": "Retry after success does not duplicate the campaign score",
+      "status": "PASS"
+    },
+    {
+      "name": "Stars and unlocks save and reload",
+      "status": "PASS"
+    },
+    {
+      "name": "Broken or hostile saves are sanitized",
+      "status": "PASS"
+    },
+    {
+      "name": "Unavailable storage does not stop play",
+      "status": "PASS"
+    },
+    {
+      "name": "A blocked destination returns safely without trapping the player",
+      "status": "PASS"
+    }
+  ]
+}

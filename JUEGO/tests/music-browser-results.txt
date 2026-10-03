@@ -1,0 +1,14 @@
+13 comprobaciones correctas · 0 fallos
+PASS · Carga de los diez recursos desde archivos locales
+PASS · AudioContext real activado
+PASS · Clavelitos · señal RMS 0.0276
+PASS · Cielito Lindo · señal RMS 0.0239
+PASS · Adelita · señal RMS 0.0241
+PASS · El Rey · señal RMS 0.0278
+PASS · Estudiantina Madrileña · señal RMS 0.0252
+PASS · Las Cintas de mi Capa · señal RMS 0.0237
+PASS · La Isa Canaria · señal RMS 0.0234
+PASS · La Morena de mi Copla · señal RMS 0.0258
+PASS · María la Portuguesa · señal RMS 0.0230
+PASS · Cartagenera · señal RMS 0.0262
+PASS · Silencio limpia voces

@@ -1,0 +1,52 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pruebas de integración · Una ronda más</title>
+<style>body{margin:0;background:#181720;color:#f1e5ce;font:14px system-ui}header{padding:18px 25px;background:#2a2331}h1{font-size:22px;margin:0 0 8px}#results{white-space:pre-wrap;font-size:12px;max-height:210px;overflow:auto;line-height:1.5}iframe{display:block;border:0;width:100%;height:860px}a{color:#e8bd7e}</style>
+<header><h1>Pruebas de integración</h1><p>Reloj controlado sobre el juego real, con controles, colisiones, sonido, guardado aislado y todas las pantallas.</p><button id="run" disabled>Ejecutar las pruebas completas</button><div id="results" role="status">Cargando…</div><a href="../index.html">Abrir el juego normal →</a></header><iframe id="app" src="../index.html?v=2#qa" title="Juego durante la prueba de integración" allow="autoplay"></iframe>
+<script>
+'use strict';
+const iframe=document.getElementById('app'),output=document.getElementById('results');let passed=0,failures=0,lines=[];
+function check(name,condition){if(condition){passed++;lines.push('PASS · '+name);}else{failures++;lines.push('FAIL · '+name);}output.textContent=lines.join('\n');}
+iframe.addEventListener('load',()=>{document.getElementById('run').disabled=false;output.textContent='Listo. Pulsa el botón para autorizar también el audio del navegador.';});
+document.getElementById('run').addEventListener('click',async()=>{
+ document.getElementById('run').disabled=true;
+ try{
+  const w=iframe.contentWindow,d=w.document,qa=w.TunaQA,g=qa.game;await qa.musicReady;
+  const step=(n,input)=>{for(let t=0;t<n;t+=.01)qa.step(Math.min(.01,n-t),input);};
+  const click=selector=>d.querySelector(selector).click();
+  const key=(code,keyValue)=>{d.getElementById('game').focus();d.dispatchEvent(new w.KeyboardEvent('keydown',{code,key:keyValue||code,bubbles:true}));};
+  const release=code=>d.dispatchEvent(new w.KeyboardEvent('keyup',{code,bubbles:true}));
+  output.textContent='';
+  check('Carga inicial',!d.getElementById('home').hidden&&d.querySelectorAll('.character-card').length===5);
+  click('[data-character="laud"]');check('Selección de personaje canónico',qa.save.character==='laud');
+  const initialSong=qa.audio.track.id;click('#next-song');check('Menú cambia canción sin repetición',qa.audio.track.id!==initialSong);click('[data-level="0"]');check('Empezar partida abre instrucciones',g.phase==='brief'&&d.getElementById('modal').open);
+  click('[data-action="begin"]');check('Inicio de nivel',g.phase==='playing');
+  const before=g.player.x;key('KeyD','d');qa.step(.1,{x:1,y:0});release('KeyD');check('Movimiento de teclado',g.player.x>before);
+  g.player={x:330,y:338};step(2,{x:1,y:0});check('Colisión con banco',g.player.x<=339.1);
+  click('#settings-open');check('Ajustes pausan sin superponer otro diálogo',g.phase==='paused'&&d.getElementById('settings').open&&!d.getElementById('modal').open);
+  click('#music');click('#effects');check('Audio con controles independientes',qa.save.music===false&&qa.save.effects===false);
+  click('#music');click('#effects');d.getElementById('volume').value=28;d.getElementById('volume').dispatchEvent(new w.Event('input'));check('Volumen',qa.save.volume===.28);
+  click('[data-close="settings"]');await new Promise(r=>setTimeout(r,60));check('Ajustes reanudan la partida',g.phase==='playing');
+  key('Escape');check('Escape pausa',g.phase==='paused');const time=g.clock;step(3);check('El tiempo no avanza en pausa',g.clock===time);click('[data-action="resume"]');
+  g.health=0;qa.step(.01);check('Derrota y pantalla de reintento',g.phase==='defeat'&&d.querySelector('[data-action="retry"]'));
+  click('[data-action="retry"]');check('Reinicio limpia puntuación y objetos',g.phase==='brief'&&g.score===0&&!g.items.some(i=>i.collected));
+  await qa.audio.unlock();check('Audio real inicializado o alternativa silenciosa',qa.audio.ctx?.state==='running'||qa.audio.available===false);
+  // Simulated seconds run faster than audible time: mute after checking audio.
+  qa.save.music=false;qa.save.effects=false;qa.audio.stop();
+  let scoreTotal=0;
+  for(let level=0;level<10;level++){
+   click('[data-action="begin"]');
+   for(const item of g.items){click(`[data-target="${item.id}"]`);let watchdog=0;while(g.target!==null&&g.phase==='playing'&&watchdog++<3000)qa.step(.01);check(`Etapa ${level+1}: objetivo ${item.id+1} alcanzado`,item.collected);}
+   click('[data-target="stage"]');let watchdog=0;while(g.mode!=='rhythm'&&g.phase==='playing'&&watchdog++<3000)qa.step(.01);check(`Etapa ${level+1}: transición musical`,g.mode==='rhythm');check(`Etapa ${level+1}: MIDI correspondiente y teclas progresivas`,qa.audio.track.id===g.config.song&&d.querySelectorAll('[data-lane]').length===g.config.laneCount);
+   for(const note of g.notes){step(Math.max(0,note.at-g.clock));const code=w.TunaData.codes[note.lane];if(level===2)key('Space',' ');else if(level===3){const b=d.querySelector(`[data-lane="${note.lane}"]`);b.dispatchEvent(new w.PointerEvent('pointerdown',{bubbles:true,pointerId:1}));}else key(code,code);release(code);qa.step(0);}
+   step(Math.max(0,g.duration-g.clock)+.1);
+   check(`Etapa ${level+1}: canción completa con controles reales`,g.hits===g.notes.length&&g.phase===(level===9?'victory':'result'));
+   check(`Etapa ${level+1}: puntuación y estrellas`,g.score>1000&&qa.save.stars[level]===3&&g.total>scoreTotal);scoreTotal=g.total;
+   if(level<9)click('[data-action="next"]');
+  }
+  check('Victoria final visible',g.phase==='victory'&&d.getElementById('modal-content').textContent.includes('Una ronda para recordar'));
+  const restored=w.TunaEngine.readSave(qa.storage);check('Guardado y desbloqueo de las diez canciones',restored.unlocked===9&&restored.best.every(n=>n>0)&&restored.stars.every(n=>n===3));
+  check('Los diez archivos MIDI cargan',w.TunaMusic.status.size===10&&Array.from(w.TunaMusic.status.values()).every(x=>x==='archivo'));check('Escudo y sprites cargados',Array.from(d.querySelectorAll('#characters img,.brand img')).every(im=>im.complete&&im.naturalWidth>0));check('Los cinco atlas PNG cargan y se usan en el renderer',w.TunaData.characters.every(c=>qa.art.images[c.id+'-atlas']?.naturalWidth===768));
+  await new Promise(r=>setTimeout(r,300));qa.step(0);
+  output.textContent=`${passed} comprobaciones correctas · ${failures} fallos\n`+lines.join('\n');document.body.dataset.passed=passed;document.body.dataset.failed=failures;
+ }catch(error){failures++;output.textContent+='\nERROR: '+error.stack;document.body.dataset.failed=failures;console.error(error);}
+});
+</script></html>

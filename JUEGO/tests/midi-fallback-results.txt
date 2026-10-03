@@ -1,0 +1,14 @@
+13 comprobaciones correctas · 0 fallos
+PASS · Carga de los diez recursos con respaldo integrado
+PASS · AudioContext real activado
+PASS · Clavelitos · señal RMS 0.0263 · running · voces 1 · reloj 1.03
+PASS · Cielito Lindo · señal RMS 0.0239 · running · voces 4 · reloj 2.53
+PASS · Adelita · señal RMS 0.0253 · running · voces 2 · reloj 4.03
+PASS · El Rey · señal RMS 0.0276 · running · voces 1 · reloj 5.53
+PASS · Estudiantina Madrileña · señal RMS 0.0241 · running · voces 1 · reloj 7.03
+PASS · Las Cintas de mi Capa · señal RMS 0.0248 · running · voces 5 · reloj 8.53
+PASS · La Isa Canaria · señal RMS 0.0236 · running · voces 5 · reloj 10.03
+PASS · La Morena de mi Copla · señal RMS 0.0254 · running · voces 4 · reloj 11.53
+PASS · María la Portuguesa · señal RMS 0.0231 · running · voces 4 · reloj 13.04
+PASS · Cartagenera · señal RMS 0.0243 · running · voces 4 · reloj 14.54
+PASS · Silencio limpia voces

@@ -1,0 +1,177 @@
+[
+  {
+    "id": "pandereta",
+    "reference": "referencias/image-4.png",
+    "referenceSha256": "de7b8e4b010e9c55e13f3d75a4da679385af615a8f0fa39cc06285d4bde51684",
+    "crop": [
+      3,
+      19,
+      308,
+      567
+    ],
+    "fit": [
+      169,
+      304
+    ],
+    "offset": [
+      11,
+      12
+    ],
+    "frame": [
+      192,
+      320
+    ],
+    "immutableHead": [
+      0,
+      0,
+      192,
+      96
+    ],
+    "rows": [
+      "idle",
+      "walk",
+      "playing",
+      "victory"
+    ]
+  },
+  {
+    "id": "guitarra",
+    "reference": "referencias/image-5.png",
+    "referenceSha256": "d0334f6b073c03cfbb5578c7810dcaef4c58c8ae52f01c9f3c2748f926e8c397",
+    "crop": [
+      0,
+      18,
+      250,
+      522
+    ],
+    "fit": [
+      151,
+      304
+    ],
+    "offset": [
+      20,
+      12
+    ],
+    "frame": [
+      192,
+      320
+    ],
+    "immutableHead": [
+      0,
+      0,
+      192,
+      96
+    ],
+    "rows": [
+      "idle",
+      "walk",
+      "playing",
+      "victory"
+    ]
+  },
+  {
+    "id": "bandurria",
+    "reference": "referencias/image-2.png",
+    "referenceSha256": "827f377a0516543f5414d881badb315540bcd39ff831d76e93e6950f413e23a1",
+    "crop": [
+      49,
+      15,
+      976,
+      1491
+    ],
+    "fit": [
+      184,
+      293
+    ],
+    "offset": [
+      4,
+      23
+    ],
+    "frame": [
+      192,
+      320
+    ],
+    "immutableHead": [
+      0,
+      0,
+      192,
+      96
+    ],
+    "rows": [
+      "idle",
+      "walk",
+      "playing",
+      "victory"
+    ]
+  },
+  {
+    "id": "guitarra-gafas",
+    "reference": "referencias/image-1.png",
+    "referenceSha256": "e2951fbe2f714086346db7bb8c6b312ddf52c52b74079d41943ebd04f958e8fd",
+    "crop": [
+      258,
+      420,
+      775,
+      1275
+    ],
+    "fit": [
+      184,
+      304
+    ],
+    "offset": [
+      4,
+      12
+    ],
+    "frame": [
+      192,
+      320
+    ],
+    "immutableHead": [
+      0,
+      0,
+      192,
+      96
+    ],
+    "rows": [
+      "idle",
+      "walk",
+      "playing",
+      "victory"
+    ]
+  },
+  {
+    "id": "laud",
+    "reference": "referencias/image-3.png",
+    "referenceSha256": "09178fd04961d597e3b2cbfcc9169ba0fcfa789b216c458c640cf2ab8700f04a",
+    "crop": [
+      95,
+      60,
+      834,
+      1718
+    ],
+    "fit": [
+      135,
+      304
+    ],
+    "offset": [
+      28,
+      12
+    ],
+    "frame": [
+      192,
+      320
+    ],
+    "immutableHead": [
+      0,
+      0,
+      192,
+      96
+    ],
+    "rows": [
+      "idle",
+      "walk",
+      "playing",
+      "victory"
+    ]
+  }
+]

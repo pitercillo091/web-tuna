@@ -1,0 +1,22 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Auditoría MIDI y sonido real</title><style>body{background:#201b29;color:#f1e5ce;font:16px system-ui;padding:35px}button{padding:15px;border:0;border-radius:9px;background:#e8bd7e;color:#201b29}pre{line-height:1.7;white-space:pre-wrap}a{color:#e8bd7e}</style>
+<h1>Diez archivos MIDI · sonido real</h1><p>Comprueba la carga y mide la señal de Web Audio. No usa micrófono ni modifica el guardado.</p><button id="run">Comprobar las diez canciones</button> <a href="?fallback=1">Probar archivos ausentes</a><pre id="results" role="status">Listo.</pre>
+<script src="../src/songs.js?v=2"></script><script>const nativeFetch=window.fetch.bind(window);window.fetch=location.search.includes('fallback=1')?async()=>{throw Error('Ausencia simulada del archivo MIDI');}:(url,options)=>nativeFetch(new URL('../'+url,location.href),options);</script><script src="../src/midi.js?v=2"></script><script src="../src/audio.js?v=2"></script><script>
+const out=document.getElementById('results');let passed=0,failed=0;const lines=[];
+function check(name,ok){ok?passed++:failed++;lines.push((ok?'PASS':'FAIL')+' · '+name);out.textContent=lines.join('\n');}
+document.getElementById('run').onclick=async()=>{
+ document.getElementById('run').disabled=true;
+ try{
+  const bus=new TunaAudio({music:true,effects:false,volume:.45});await bus.unlock();await TunaMusic.preload();
+  const fallback=location.search.includes('fallback=1');check('Carga de los diez recursos '+(fallback?'con respaldo integrado':'desde archivos locales'),TunaMusic.status.size===10&&Array.from(TunaMusic.status.values()).every(v=>v===(fallback?'integrado':'archivo')));
+  check('AudioContext real activado',bus.ctx?.state==='running');if(!bus.ctx)throw Error('Web Audio no disponible en este navegador');
+  const analyser=bus.ctx.createAnalyser();analyser.fftSize=1024;bus.master.disconnect();bus.master.connect(analyser);analyser.connect(bus.ctx.destination);const wave=new Float32Array(analyser.fftSize);
+  for(const song of TunaSongs){
+   bus.select(song.id,{context:'menu'});let peak=0;const start=performance.now();
+   await new Promise(resolve=>{function sample(){bus.update({phase:'menu'});analyser.getFloatTimeDomainData(wave);peak=Math.max(peak,Math.sqrt(wave.reduce((s,v)=>s+v*v,0)/wave.length));if(performance.now()-start<1500)requestAnimationFrame(sample);else resolve();}sample();});
+   check(song.title+' · señal RMS '+peak.toFixed(4)+' · '+bus.ctx.state+' · voces '+bus.nodes.size+' · reloj '+bus.ctx.currentTime.toFixed(2),peak>.0001);bus.stop();
+  }
+  bus.settings.music=false;bus.update({phase:'menu'});check('Silencio limpia voces',bus.nodes.size===0);
+  document.body.dataset.passed=passed;document.body.dataset.failed=failed;out.textContent=`${passed} comprobaciones correctas · ${failed} fallos\n`+lines.join('\n');
+ }catch(e){document.body.dataset.failed=++failed;out.textContent+='\nERROR: '+e.message;console.error(e);}
+};
+</script></html>

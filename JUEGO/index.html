@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#201b29"><meta name="description" content="Una ronda más: la aventura musical de la Rondalla de Lopera. Prepara al grupo, recorre la plaza y toca a compás.">
+  <title>Una ronda más · Rondalla de Lopera</title>
+  <link rel="icon" href="assets/ui/escudo.webp"><link rel="stylesheet" href="css/game.css?v=2">
+</head>
+<body>
+  <div class="page">
+    <header class="masthead">
+      <a class="brand" href="#" id="brand" aria-label="Volver al inicio del juego"><img src="assets/ui/escudo.webp" alt="Escudo original de la Rondalla de Lopera"><span>LA TUNA<small>RONDALLA DE LOPERA</small></span></a>
+      <div class="header-right"><span class="edition">UNA AVENTURA CON MUCHO COMPÁS</span><button class="icon-button" id="settings-open" aria-label="Ajustes de sonido">♫ <span>Sonido</span></button><button class="icon-button" id="pause" hidden aria-label="Pausar partida">Ⅱ <span>Pausa</span></button></div>
+    </header>
+
+    <main>
+      <section id="home" class="home">
+        <div class="hero">
+          <canvas id="home-art" class="hero-art" width="960" height="540" aria-label="Ilustración de los cinco músicos de la Rondalla en una plaza iluminada"></canvas>
+          <div class="hero-shade"></div>
+          <div class="hero-copy"><p class="eyebrow"><span></span> LA AVENTURA DE NUESTRA TUNA</p><h1>La noche pide<br><em>una ronda más.</em></h1><p class="hero-description">Que lleguen los músicos, que suenen las cuerdas<br class="desktop-break"> y que nadie se vaya sin una última canción.</p><button id="play" class="button primary">Empezar la ronda <span>→</span></button><div class="hero-meta"><span>10 canciones</span><i></i><span>5 músicos</span><i></i><span>Tu mejor compás</span></div></div>
+          <div class="postmark"><span>DESDE</span><b>LOPERA</b><span>HASTA EL ÚLTIMO APLAUSO</span></div>
+        </div>
+
+        <div class="music-strip"><button id="music-now" class="text-button" aria-label="Activar y ver la música actual">♫ Activa la música</button><button id="next-song" class="text-button" aria-label="Cambiar canción del menú">Otra canción ↻</button><span>REPERTORIO DE TUNA · MIDI</span></div><div class="below-hero"><p><span class="gold">♪</span> Una capa, una beca roja y una noche por delante.</p><button id="how-open" class="text-button">Cómo se juega <span>↗</span></button></div>
+        <section class="cast-section"><div class="section-heading"><div><p class="eyebrow">LA CUADRILLA</p><h2>Elige quién lleva el compás</h2></div><span class="muted">Todos comparten la misma aventura.</span></div><div id="characters" class="characters"></div></section>
+        <section class="route-section"><div class="section-heading"><div><p class="eyebrow">DE ENSAYO EN ENSAYO, DE PLAZA EN PLAZA</p><h2>Diez canciones para una gran ronda</h2></div><label class="difficulty"><input id="easy" type="checkbox" checked> Ritmo tranquilo</label></div><div id="levels" class="levels"></div></section>
+        <div class="photo-footer"><img src="assets/referencias/grupo.webp" alt="Fotografía original de los músicos de la Tuna"><div><p class="eyebrow">INSPIRADO EN LOS NUESTROS</p><p>Los mismos colores.<br>Una nueva forma de salir de ronda.</p><button id="credits-open" class="text-button">Personajes, fotos y créditos ↗</button></div></div>
+      </section>
+
+      <section id="play-area" class="play-area" hidden aria-label="Partida">
+        <div class="hud"><div class="hud-title"><span id="level-number" class="level-number">01</span><div><p id="place">Lopera · El ensayo</p><h2 id="level-title">Que no falte una cuerda</h2></div></div><div class="hud-stats"><div><small>PUNTOS</small><b id="score">0</b></div><div class="health-stat"><small id="health-label">ÁNIMO</small><div class="health-track"><span id="health-fill"></span></div></div><div><small id="timer-label">TIEMPO</small><b id="timer">1:45</b></div></div></div>
+        <div class="game-viewport"><canvas id="game" width="960" height="540" tabindex="0" aria-label="Plaza de juego. Usa WASD o flechas para moverte, espacio para recoger. En actuaciones pulsa la dirección de cada nota."></canvas><div id="beacons" class="beacons" aria-label="Objetivos de la plaza"></div></div>
+        <div class="objective-bar"><span class="objective-dot"></span><p id="objective">Recoge los instrumentos</p><b id="progress">0 / 3</b></div>
+        <div id="rhythm-controls" hidden><p id="next-note" class="note-hint">Prepárate para tocar…</p><div class="rhythm-controls" aria-label="Controles musicales"><button data-lane="0" aria-label="Nota izquierda">←<small>A</small></button><button data-lane="1" aria-label="Nota abajo">↓<small>S</small></button><button data-lane="2" aria-label="Nota arriba">↑<small>W</small></button><button data-lane="3" aria-label="Nota derecha">→<small>D</small></button></div></div>
+        <div id="explore-controls" class="explore-controls"><div class="dpad" aria-label="Controles de movimiento"><button data-direction="up" aria-label="Mover arriba">↑</button><button data-direction="left" aria-label="Mover izquierda">←</button><button data-direction="down" aria-label="Mover abajo">↓</button><button data-direction="right" aria-label="Mover derecha">→</button></div><p class="controls-tip"><kbd>WASD</kbd> / <kbd>← ↑ ↓ →</kbd> moverse <span>·</span> <kbd>Espacio</kbd> recoger o tocar<br>También puedes tocar un objeto para ir hasta él.</p><button id="interact" class="button action">Recoger / tocar <span>✦</span></button></div>
+      </section>
+    </main>
+    <footer class="footer"><span>UNA RONDA MÁS <i>·</i> RONDALLA DE LOPERA</span><span>Hecho para compartir una buena ronda.</span></footer>
+  </div>
+
+  <dialog id="modal"><div id="modal-content"></div></dialog>
+  <dialog id="settings"><div class="dialog-head"><p class="eyebrow">A TU GUSTO</p><button class="close" data-close="settings" aria-label="Cerrar ajustes">×</button></div><h2>El sonido de la ronda</h2><p class="muted">La música se activa al empezar. Puedes tocar también en silencio.</p><label class="setting-row">Repertorio MIDI <input id="music" type="checkbox" checked></label><label class="setting-row">Efectos de juego <input id="effects" type="checkbox" checked></label><label class="volume-row">Volumen <input id="volume" type="range" min="0" max="100" value="45"><output id="volume-value">45%</output></label><button class="button primary full" id="test-sound">Probar sonido ♪</button><p id="audio-status" class="small muted"></p><p id="storage-status" class="small muted"></p></dialog>
+  <div id="live-status" class="sr-only" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript">Activa JavaScript en tu navegador para jugar a Una ronda más.</div></noscript>
+  <script src="src/songs.js?v=2"></script><script src="src/midi.js?v=2"></script><script src="src/data.js?v=2"></script><script src="src/engine.js?v=2"></script><script src="src/audio.js?v=2"></script><script src="src/art.js?v=2"></script><script src="src/game.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+101 comprobaciones correctas · 0 fallos
+PASS · Carga inicial
+PASS · Selección de personaje canónico
+PASS · Menú cambia canción sin repetición
+PASS · Empezar partida abre instrucciones
+PASS · Inicio de nivel
+PASS · Movimiento de teclado
+PASS · Colisión con banco
+PASS · Ajustes pausan sin superponer otro diálogo
+PASS · Audio con controles independientes
+PASS · Volumen
+PASS · Ajustes reanudan la partida
+PASS · Escape pausa
+PASS · El tiempo no avanza en pausa
+PASS · Derrota y pantalla de reintento
+PASS · Reinicio limpia puntuación y objetos
+PASS · Audio real inicializado o alternativa silenciosa
+PASS · Etapa 1: objetivo 1 alcanzado
+PASS · Etapa 1: objetivo 2 alcanzado
+PASS · Etapa 1: objetivo 3 alcanzado
+PASS · Etapa 1: transición musical
+PASS · Etapa 1: MIDI correspondiente y teclas progresivas
+PASS · Etapa 1: canción completa con controles reales
+PASS · Etapa 1: puntuación y estrellas
+PASS · Etapa 2: objetivo 1 alcanzado
+PASS · Etapa 2: objetivo 2 alcanzado
+PASS · Etapa 2: objetivo 3 alcanzado
+PASS · Etapa 2: transición musical
+PASS · Etapa 2: MIDI correspondiente y teclas progresivas
+PASS · Etapa 2: canción completa con controles reales
+PASS · Etapa 2: puntuación y estrellas
+PASS · Etapa 3: objetivo 1 alcanzado
+PASS · Etapa 3: objetivo 2 alcanzado
+PASS · Etapa 3: objetivo 3 alcanzado
+PASS · Etapa 3: objetivo 4 alcanzado
+PASS · Etapa 3: transición musical
+PASS · Etapa 3: MIDI correspondiente y teclas progresivas
+PASS · Etapa 3: canción completa con controles reales
+PASS · Etapa 3: puntuación y estrellas
+PASS · Etapa 4: objetivo 1 alcanzado
+PASS · Etapa 4: objetivo 2 alcanzado
+PASS · Etapa 4: objetivo 3 alcanzado
+PASS · Etapa 4: objetivo 4 alcanzado
+PASS · Etapa 4: transición musical
+PASS · Etapa 4: MIDI correspondiente y teclas progresivas
+PASS · Etapa 4: canción completa con controles reales
+PASS · Etapa 4: puntuación y estrellas
+PASS · Etapa 5: objetivo 1 alcanzado
+PASS · Etapa 5: objetivo 2 alcanzado
+PASS · Etapa 5: objetivo 3 alcanzado
+PASS · Etapa 5: objetivo 4 alcanzado
+PASS · Etapa 5: transición musical
+PASS · Etapa 5: MIDI correspondiente y teclas progresivas
+PASS · Etapa 5: canción completa con controles reales
+PASS · Etapa 5: puntuación y estrellas
+PASS · Etapa 6: objetivo 1 alcanzado
+PASS · Etapa 6: objetivo 2 alcanzado
+PASS · Etapa 6: objetivo 3 alcanzado
+PASS · Etapa 6: objetivo 4 alcanzado
+PASS · Etapa 6: transición musical
+PASS · Etapa 6: MIDI correspondiente y teclas progresivas
+PASS · Etapa 6: canción completa con controles reales
+PASS · Etapa 6: puntuación y estrellas
+PASS · Etapa 7: objetivo 1 alcanzado
+PASS · Etapa 7: objetivo 2 alcanzado
+PASS · Etapa 7: objetivo 3 alcanzado
+PASS · Etapa 7: objetivo 4 alcanzado
+PASS · Etapa 7: transición musical
+PASS · Etapa 7: MIDI correspondiente y teclas progresivas
+PASS · Etapa 7: canción completa con controles reales
+PASS · Etapa 7: puntuación y estrellas
+PASS · Etapa 8: objetivo 1 alcanzado
+PASS · Etapa 8: objetivo 2 alcanzado
+PASS · Etapa 8: objetivo 3 alcanzado
+PASS · Etapa 8: objetivo 4 alcanzado
+PASS · Etapa 8: transición musical
+PASS · Etapa 8: MIDI correspondiente y teclas progresivas
+PASS · Etapa 8: canción completa con controles reales
+PASS · Etapa 8: puntuación y estrellas
+PASS · Etapa 9: objetivo 1 alcanzado
+PASS · Etapa 9: objetivo 2 alcanzado
+PASS · Etapa 9: objetivo 3 alcanzado
+PASS · Etapa 9: objetivo 4 alcanzado
+PASS · Etapa 9: objetivo 5 alcanzado
+PASS · Etapa 9: transición musical
+PASS · Etapa 9: MIDI correspondiente y teclas progresivas
+PASS · Etapa 9: canción completa con controles reales
+PASS · Etapa 9: puntuación y estrellas
+PASS · Etapa 10: objetivo 1 alcanzado
+PASS · Etapa 10: objetivo 2 alcanzado
+PASS · Etapa 10: objetivo 3 alcanzado
+PASS · Etapa 10: objetivo 4 alcanzado
+PASS · Etapa 10: objetivo 5 alcanzado
+PASS · Etapa 10: transición musical
+PASS · Etapa 10: MIDI correspondiente y teclas progresivas
+PASS · Etapa 10: canción completa con controles reales
+PASS · Etapa 10: puntuación y estrellas
+PASS · Victoria final visible
+PASS · Guardado y desbloqueo de las diez canciones
+PASS · Los diez archivos MIDI cargan
+PASS · Escudo y sprites cargados
+PASS · Los cinco atlas PNG cargan y se usan en el renderer
+
+5 personajes cargados · Reposo · atlas PNG
+5 personajes cargados · Caminar · atlas PNG
+5 personajes cargados · Actuación · atlas PNG
+5 personajes cargados · Victoria · atlas PNG
+5 personajes cargados · Victoria · respaldo SVG
+
+Consola galeria: []
+Consola juego normal: []
+Responsive:
+Móvil vertical · 390 × 844: PASS · sin desbordamiento, controles visibles de 44 px
+Móvil horizontal · 844 × 390: PASS · sin desbordamiento, controles visibles de 44 px
+Escritorio · 1200 × 850: PASS · sin desbordamiento, controles visibles de 44 px

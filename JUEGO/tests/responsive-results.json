@@ -1,0 +1,14 @@
+[
+  {
+    "vista": "Móvil vertical · 390 × 844",
+    "resultado": "PASS · sin desbordamiento, controles visibles de 44 px"
+  },
+  {
+    "vista": "Móvil horizontal · 844 × 390",
+    "resultado": "PASS · sin desbordamiento, controles visibles de 44 px"
+  },
+  {
+    "vista": "Escritorio · 1200 × 850",
+    "resultado": "PASS · sin desbordamiento, controles visibles de 44 px"
+  }
+]
