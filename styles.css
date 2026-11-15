@@ -311,6 +311,70 @@ strong {
     color: var(--color-text);
 }
 
+.header__nav-dropdown {
+    position: relative;
+}
+
+.header__nav-dropdown > details {
+    position: relative;
+}
+
+.header__nav-dropdown summary {
+    cursor: pointer;
+    list-style: none;
+}
+
+.header__nav-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+.header__nav-dropdown summary::after {
+    content: '▾';
+    display: inline-block;
+    margin-left: 0.3rem;
+    font-size: 0.7em;
+    opacity: 0.75;
+    transform: translateY(-1px);
+}
+
+.header__nav-dropdown details[open] > summary {
+    color: var(--color-text);
+}
+
+.header__nav-submenu {
+    position: absolute;
+    top: calc(100% + 0.7rem);
+    left: 50%;
+    z-index: 1002;
+    display: grid;
+    gap: 0.15rem;
+    min-width: 190px;
+    margin: 0;
+    padding: 0.5rem;
+    list-style: none;
+    background: rgba(26, 26, 26, 0.98);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    transform: translateX(-50%);
+}
+
+.header__nav-submenu a {
+    display: block;
+    padding: 0.55rem 0.7rem;
+    border-radius: 0.25rem;
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.header__nav-submenu a:hover,
+.header__nav-submenu a:focus-visible {
+    background: rgba(198, 40, 40, 0.18);
+    color: var(--color-text);
+}
+
 .header__nav-stunafy {
     display: inline-flex;
     align-items: center;
@@ -1866,6 +1930,28 @@ a.contacto__persona-wa:hover {
         align-items: flex-start;
         width: 100%;
         gap: 0;
+    }
+
+    .header__nav-dropdown,
+    .header__nav-dropdown details {
+        width: 100%;
+    }
+
+    .header__nav-submenu {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        padding: 0.25rem 0 0.25rem 0.9rem;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        transform: none;
+    }
+
+    .header__nav-submenu a {
+        padding: var(--space-sm) 0;
+        border-bottom: 1px solid var(--color-border);
+        font-size: 0.95rem;
     }
 
     .header__nav-link {
